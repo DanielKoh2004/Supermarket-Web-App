@@ -1,0 +1,135 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class ShoppingCart : System.Web.UI.Page
+    {
+        string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                LoadCartItems();
+            }
+        }
+
+        private void LoadCartItems()
+        {
+            int accountId = Convert.ToInt32(Session["AccountID"]);
+            if (accountId <= 0)
+            {
+                // Not logged in, redirect or show message
+                lblSubtotal.Text = "Please log in to view your cart.";
+                return;
+            }
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                con.Open();
+                // Get CartID for this user
+                string cartIdQuery = "SELECT CartID FROM Cart WHERE AccountID=@AccountID";
+                SqlCommand cartCmd = new SqlCommand(cartIdQuery, con);
+                cartCmd.Parameters.AddWithValue("@AccountID", accountId);
+                object cartIdObj = cartCmd.ExecuteScalar();
+
+                if (cartIdObj == null)
+                {
+                    // No cart yet
+                    lblSubtotal.Text = "Your cart is empty.";
+                    return;
+                }
+
+                int cartId = (int)cartIdObj;
+
+                // Get cart items
+                string itemsQuery = @"
+                    SELECT ci.Cart_ItemID, ci.ItemID, i.ItemName, i.ImageFile, i.UnitPrice, ci.ItemQuantity
+                    FROM Cart_Item ci
+                    JOIN Item i ON ci.ItemID = i.ItemID
+                    WHERE ci.CartID = @CartID";
+                SqlCommand itemsCmd = new SqlCommand(itemsQuery, con);
+                itemsCmd.Parameters.AddWithValue("@CartID", cartId);
+
+                SqlDataAdapter da = new SqlDataAdapter(itemsCmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                rptCart.DataSource = dt;
+                rptCart.DataBind();
+
+                // Check if cart is empty
+                bool isEmpty = dt.Rows.Count == 0;
+                btnCheckout.Enabled = !isEmpty;
+                if (isEmpty)
+                {
+                    lblSubtotal.Text = "";
+                    // Show message (add a label if needed)
+                    lblMessage.Text = "Your cart is empty.";
+                }
+                else
+                {
+                    lblMessage.Text = "";
+                }
+
+                // Calculate subtotal
+                decimal subtotal = 0;
+                foreach (DataRow row in dt.Rows)
+                {
+                    subtotal += Convert.ToDecimal(row["UnitPrice"]) * Convert.ToInt32(row["ItemQuantity"]);
+                }
+                lblSubtotal.Text = "RM " + subtotal.ToString("F2");
+            }
+        }
+
+        protected void btnCheckout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Checkout.aspx");
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Menu.aspx");
+        }
+
+        protected void rptCart_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            int cartItemId = Convert.ToInt32(e.CommandArgument);
+            string command = e.CommandName;
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                con.Open();
+                if (command == "plus")
+                {
+                    string sql = "UPDATE Cart_Item SET ItemQuantity = ItemQuantity + 1 WHERE Cart_ItemID = @Cart_ItemID";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@Cart_ItemID", cartItemId);
+                    cmd.ExecuteNonQuery();
+                }
+                else if (command == "minus")
+                {
+                    // Only decrease if quantity > 1
+                    string sql = "UPDATE Cart_Item SET ItemQuantity = CASE WHEN ItemQuantity > 1 THEN ItemQuantity - 1 ELSE 1 END WHERE Cart_ItemID = @Cart_ItemID";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@Cart_ItemID", cartItemId);
+                    cmd.ExecuteNonQuery();
+                }
+                else if (command == "delete")
+                {
+                    string sql = "DELETE FROM Cart_Item WHERE Cart_ItemID = @Cart_ItemID";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@Cart_ItemID", cartItemId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            // Reload cart items after update
+            LoadCartItems();
+        }
+    }
+}

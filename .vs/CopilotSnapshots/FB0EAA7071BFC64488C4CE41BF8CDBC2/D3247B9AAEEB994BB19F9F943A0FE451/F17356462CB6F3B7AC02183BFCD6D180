@@ -1,0 +1,84 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+
+namespace WebApplication1
+{
+    public partial class Site : System.Web.UI.MasterPage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                if (Session["AccountID"] != null)
+                {
+                    btnLoginLogout.Visible = false;
+                    imgProfile.Visible = true;
+                    lblGreeting.Visible = true;
+                    pnlProfileInfo.Visible = false;
+
+                    string accountId = Session["AccountID"].ToString();
+                    string accountType = Session["AccountType"].ToString();
+                    string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+                    string name = "";
+                    string email = "";
+                    string extraInfo = "";
+                    using (SqlConnection conn = new SqlConnection(connStr))
+                    {
+                        conn.Open();
+                        if (accountType == "Staff")
+                        {
+                            SqlCommand cmd = new SqlCommand("SELECT Name, Email, Role FROM Staff WHERE AccountID=@AccountID", conn);
+                            cmd.Parameters.AddWithValue("@AccountID", accountId);
+                            var reader = cmd.ExecuteReader();
+                            if (reader.Read())
+                            {
+                                name = reader["Name"].ToString();
+                                email = reader["Email"].ToString();
+                                extraInfo = "Role: " + reader["Role"].ToString();
+                            }
+                            reader.Close();
+                        }
+                        else
+                        {
+                            SqlCommand cmd = new SqlCommand("SELECT Name, Email FROM Customer WHERE AccountID=@AccountID", conn);
+                            cmd.Parameters.AddWithValue("@AccountID", accountId);
+                            var reader = cmd.ExecuteReader();
+                            if (reader.Read())
+                            {
+                                name = reader["Name"].ToString();
+                                email = reader["Email"].ToString();
+                            }
+                            reader.Close();
+                        }
+                    }
+                    lblGreeting.Text = $"Hello, {name}";
+                    lblProfileInfo.Text = $"Name: {name}<br/>Email: {email}<br/>{extraInfo}";
+                }
+                else
+                {
+                    btnLoginLogout.Visible = true;
+                    imgProfile.Visible = false;
+                    lblGreeting.Visible = false;
+                    pnlProfileInfo.Visible = false;
+                }
+            }
+        }
+
+        protected void btnLoginLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Login.aspx");
+        }
+
+        protected void imgProfile_Click(object sender, EventArgs e)
+        {
+            // Profile icon click logic handled client-side
+        }
+
+    }
+}

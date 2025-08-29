@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class Checkout : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                pnlDelivery.Visible = false;
+                pnlPickup.Visible = false;
+            }
+        }
+
+        protected void rblMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string method = rblMethod.SelectedValue;
+
+            if (method == "delivery")
+            {
+                pnlDelivery.Visible = true;
+                pnlPickup.Visible = false;
+            }
+            else if (method == "pickup")
+            {
+                pnlPickup.Visible = true;
+                pnlDelivery.Visible = false;
+            }
+        }
+
+        protected void btnConfirm_Click1(object sender, EventArgs e)
+        {
+            string method = rblMethod.SelectedValue;
+            if (string.IsNullOrEmpty(method))
+            {
+                // Show error message
+                // lblError.Text = "Please select a checkout method.";
+                return;
+            }
+            if (method == "delivery")
+            {
+                if (string.IsNullOrWhiteSpace(txtName.Text) ||
+                    string.IsNullOrWhiteSpace(txtAddress.Text) ||
+                    string.IsNullOrWhiteSpace(txtPhone.Text))
+                {
+                    // lblError.Text = "Please fill in all delivery fields.";
+                    return;
+                }
+            }
+            else if (method == "pickup")
+            {
+                if (string.IsNullOrWhiteSpace(ddlPickupLocation.SelectedValue))
+                {
+                    // lblError.Text = "Please select a pickup location.";
+                    return;
+                }
+            }
+            // If all validation passes, redirect to payment
+            Response.Redirect("Payment.aspx");
+
+        }
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ShoppingCart.aspx");
+
+        }
+    }
+}

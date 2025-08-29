@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class SalesReport : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnGenerateSales_Click(object sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("Date");
+            table.Columns.Add("Product");
+            table.Columns.Add("Quantity");
+            table.Columns.Add("Total Sales");
+
+            table.Rows.Add("2025-08-01", "Apples", "30", "$60");
+            table.Rows.Add("2025-08-01", "Bananas", "20", "$40");
+            table.Rows.Add("2025-08-01", "Oranges", "25", "$50");
+            table.Rows.Add("2025-08-01", "Milk", "15", "$45");
+            table.Rows.Add("2025-08-01", "Bread", "18", "$36");
+
+            gvSalesReport.DataSource = table;
+            gvSalesReport.DataBind();
+        }
+    }
+}

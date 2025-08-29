@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class SalesReport : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnGenerateSales_Click(object sender, EventArgs e)
+        {
+            string connStr = System.Configuration.ConnectionManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+            using (var con = new System.Data.SqlClient.SqlConnection(connStr))
+            {
+                con.Open();
+                DateTime selectedDate = calSalesDate.SelectedDate;
+                string sql = @"
+                    SELECT 
+                        CAST(o.OrderDate AS DATE) AS [Date],
+                        i.ItemName AS [Product],
+                        SUM(oi.Quantity) AS [Quantity],
+                        SUM(oi.Quantity * oi.ItemPrice) AS [TotalSales]
+                    FROM [Order] o
+                    JOIN OrderItem oi ON o.OrderID = oi.OrderID
+                    JOIN Item i ON oi.ItemID = i.ItemID
+                    WHERE (@SelectedDate IS NULL OR CAST(o.OrderDate AS DATE) = @SelectedDate)
+                    GROUP BY CAST(o.OrderDate AS DATE), i.ItemName
+                    ORDER BY [Date] DESC, i.ItemName
+                ";
+                using (var cmd = new System.Data.SqlClient.SqlCommand(sql, con))
+                {
+                    if (selectedDate == DateTime.MinValue)
+                        cmd.Parameters.AddWithValue("@SelectedDate", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@SelectedDate", selectedDate.Date);
+                    using (var da = new System.Data.SqlClient.SqlDataAdapter(cmd))
+                    {
+                        var dt = new System.Data.DataTable();
+                        da.Fill(dt);
+                        gvSalesReport.DataSource = dt;
+                        gvSalesReport.DataBind();
+                        // Calculate and show grand total sales
+                        decimal grandTotal = 0;
+                        foreach (System.Data.DataRow row in dt.Rows)
+                        {
+                            if (row["TotalSales"] != DBNull.Value)
+                                grandTotal += Convert.ToDecimal(row["TotalSales"]);
+                        }
+                        gvSalesReport.Caption = "Grand Total Sales: RM " + grandTotal.ToString("F2");
+                    }
+                }
+            }
+        }
+    }
+}

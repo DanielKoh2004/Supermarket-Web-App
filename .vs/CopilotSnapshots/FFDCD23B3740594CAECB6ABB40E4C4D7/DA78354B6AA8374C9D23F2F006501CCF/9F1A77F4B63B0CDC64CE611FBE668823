@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class UpdateStock : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnUpdateStock_Click(object sender, EventArgs e)
+        {
+            int productId;
+            int newStock;
+            if (int.TryParse(txtProductID.Text.Trim(), out productId) && int.TryParse(txtNewStock.Text.Trim(), out newStock))
+            {
+                string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+                using (var con = new System.Data.SqlClient.SqlConnection(connStr))
+                {
+                    con.Open();
+                    string sql = "UPDATE Item SET StockQuantity = @StockQuantity WHERE ItemID = @ItemID";
+                    using (var cmd = new System.Data.SqlClient.SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@StockQuantity", newStock);
+                        cmd.Parameters.AddWithValue("@ItemID", productId);
+                        int rows = cmd.ExecuteNonQuery();
+                        // Optionally show a message to staff
+                        // lblMessage.Text = rows > 0 ? "Stock updated!" : "Product not found.";
+                    }
+                }
+            }
+            else
+            {
+                // Optionally show a message to staff
+                // lblMessage.Text = "Invalid input.";
+            }
+        }
+    }
+}

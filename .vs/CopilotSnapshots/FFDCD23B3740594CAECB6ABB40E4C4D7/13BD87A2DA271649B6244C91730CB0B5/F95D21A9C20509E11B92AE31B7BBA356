@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class Payment : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                pnlBanking.Visible = false;
+                pnlCard.Visible = false;
+                pnlEwallet.Visible = false;
+            }
+        }
+
+        protected void rblPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selected = rblPaymentMethod.SelectedValue;
+
+            pnlBanking.Visible = selected == "bank";
+            pnlCard.Visible = selected == "card";
+            pnlEwallet.Visible = selected == "wallet";
+        }
+
+
+
+        protected void btnPay_Click(object sender, EventArgs e)
+        {
+            // Show alert, then redirect to Home.aspx
+            Response.Write("<script>alert('Payment Successful! Thank You!'); window.location='Home.aspx';</script>");
+        }
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Checkout.aspx");
+
+        }
+
+    }
+}

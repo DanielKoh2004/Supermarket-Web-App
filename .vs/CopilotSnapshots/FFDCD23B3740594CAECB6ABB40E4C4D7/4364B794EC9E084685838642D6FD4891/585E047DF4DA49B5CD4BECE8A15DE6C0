@@ -1,0 +1,42 @@
+﻿using System;
+using System.Data.SqlClient;
+using System.Web.UI;
+
+namespace WebApplication1
+{
+    public partial class Login : System.Web.UI.Page
+    {
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+
+            string email = txtEmail.Text;   // matches ASPX ID
+            string password = txtPassword.Text;
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT AccountID, Role FROM Account WHERE Email=@Email AND Password=@Password", conn);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Password", password);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    Session["AccountID"] = reader["AccountID"].ToString();
+                    Session["Role"] = reader["Role"].ToString();
+                    Response.Redirect("home.aspx");
+                }
+                else
+                {
+                    lblError.Text = "Invalid email or password.";
+                }
+            }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

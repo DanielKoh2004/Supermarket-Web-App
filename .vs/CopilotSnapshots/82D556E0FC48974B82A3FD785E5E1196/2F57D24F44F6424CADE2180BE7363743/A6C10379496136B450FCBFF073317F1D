@@ -1,0 +1,35 @@
+﻿using System;
+using System.Data;
+
+namespace SupermarketAdminPage
+{
+    public partial class StaffReport : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                BindStaffReport();
+            }
+        }
+
+        private void BindStaffReport()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("StaffID");
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Position");
+            dt.Columns.Add("Shift");
+            dt.Columns.Add("Status");
+
+            dt.Rows.Add("S001", "Alice Tan", "Cashier", "Morning", "Active");
+            dt.Rows.Add("S002", "Brian Lee", "Stock Manager", "Evening", "Active");
+            dt.Rows.Add("S003", "Catherine Ong", "Customer Service", "Morning", "On Leave");
+            dt.Rows.Add("S004", "Daniel Ng", "Security", "Night", "Active");
+            dt.Rows.Add("S005", "Emily Lim", "Cleaner", "Morning", "Resigned");
+
+            gvStaffReport.DataSource = dt;
+            gvStaffReport.DataBind();
+        }
+    }
+}

@@ -1,0 +1,37 @@
+﻿using System;
+using System.Data;
+using System.Web.UI;
+
+namespace WebApplication1
+{
+    public partial class OrderHistory : Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                // Sample data for demonstration
+                DataTable table = new DataTable();
+                table.Columns.Add("OrderID");
+                table.Columns.Add("OrderDate");
+                table.Columns.Add("PurchasedItems");
+                table.Columns.Add("DeliveryInfo");
+                table.Columns.Add("PaymentMethod");
+                table.Columns.Add("TotalAmount");
+                table.Columns.Add("Status");
+
+                table.Rows.Add("1001", "2025-08-01", "Apples, Bananas, Milk", "John Doe, 123 Main St, 0123456789", "Online Banking", "120.00", "Completed");
+                table.Rows.Add("1002", "2025-08-02", "Bread, Oranges", "Self Pickup - KL", "Credit Card", "75.50", "Processing");
+                table.Rows.Add("1003", "2025-08-03", "Chicken, Rice, Eggs", "Jane Smith, 456 Market Rd, 0198765432", "E-Wallet", "210.00", "Shipped");
+
+                gvOrderHistory.DataSource = table;
+                gvOrderHistory.DataBind();
+            }
+        }
+
+        protected void btnBackHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
+    }
+}
