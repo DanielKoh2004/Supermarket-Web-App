@@ -69,14 +69,13 @@ namespace WebApplication1
                     lblError.Visible = true;
                     return;
                 }
-                Session["RecipientName"] = null;
+                Session["RecipientName"] = txtName.Text.Trim(); // Optionally use user's name
                 Session["DeliveryAddress"] = null;
-                Session["ContactNumber"] = null;
+                Session["ContactNumber"] = txtPhone.Text.Trim(); // Optionally use user's phone
                 Session["PickupLocation"] = ddlPickupLocation.SelectedValue;
             }
             // If all validation passes, redirect to payment
             Response.Redirect("Payment.aspx");
-
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {

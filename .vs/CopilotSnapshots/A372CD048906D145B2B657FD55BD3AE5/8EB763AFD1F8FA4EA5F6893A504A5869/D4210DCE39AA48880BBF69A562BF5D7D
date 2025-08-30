@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Web.UI;
 
@@ -47,13 +47,8 @@ namespace WebApplication1
                                 WHERE oi.OrderID = o.OrderID
                                 FOR XML PATH(''), TYPE
                             ).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS PurchasedItems,
-                            o.TotalAmount,
-                            CASE WHEN d.DeliveryID IS NOT NULL THEN 'Delivery' ELSE 'In-Store Pickup' END AS DeliveryMethod,
-                            ISNULL(d.RecipientName, '') AS RecipientName,
-                            ISNULL(d.DeliveryAddress, CASE WHEN d.DeliveryID IS NULL THEN 'In-Store Pickup' ELSE '' END) AS DeliveryAddress,
-                            ISNULL(d.ContactNumber, '') AS ContactNumber
+                            o.TotalAmount
                         FROM [Order] o
-                        LEFT JOIN Delivery d ON o.OrderID = d.OrderID
                         WHERE o.CustomerID = @CustomerID
                         ORDER BY o.OrderDate DESC";
                     using (var cmd = new System.Data.SqlClient.SqlCommand(sql, con))

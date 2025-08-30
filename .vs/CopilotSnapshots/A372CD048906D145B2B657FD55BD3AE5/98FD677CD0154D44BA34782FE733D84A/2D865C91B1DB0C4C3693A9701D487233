@@ -158,13 +158,24 @@ namespace WebApplication1
                     cmd.ExecuteNonQuery();
                 }
 
-                // Insert delivery info if applicable
+                // Insert delivery info
                 string checkoutMethod = Session["CheckoutMethod"] != null ? Session["CheckoutMethod"].ToString() : "";
-                string recipientName = Session["RecipientName"] != null ? Session["RecipientName"].ToString() : "";
-                string deliveryAddress = Session["DeliveryAddress"] != null ? Session["DeliveryAddress"].ToString() : "";
-                string contactNumber = Session["ContactNumber"] != null ? Session["ContactNumber"].ToString() : "";
-
-                if (checkoutMethod == "delivery" && !string.IsNullOrEmpty(recipientName) && !string.IsNullOrEmpty(deliveryAddress))
+                string recipientName = "";
+                string deliveryAddress = "";
+                string contactNumber = "";
+                if (checkoutMethod == "delivery")
+                {
+                    recipientName = Session["RecipientName"] != null ? Session["RecipientName"].ToString() : "";
+                    deliveryAddress = Session["DeliveryAddress"] != null ? Session["DeliveryAddress"].ToString() : "";
+                    contactNumber = Session["ContactNumber"] != null ? Session["ContactNumber"].ToString() : "";
+                }
+                else if (checkoutMethod == "pickup")
+                {
+                    recipientName = Session["RecipientName"] != null ? Session["RecipientName"].ToString() : "";
+                    deliveryAddress = Session["PickupLocation"] != null && Session["PickupLocation"].ToString() != "" ? Session["PickupLocation"].ToString() : "In-Store Pickup";
+                    contactNumber = Session["ContactNumber"] != null ? Session["ContactNumber"].ToString() : "";
+                }
+                if (!string.IsNullOrEmpty(recipientName) && !string.IsNullOrEmpty(deliveryAddress))
                 {
                     using (var cmd = new System.Data.SqlClient.SqlCommand("INSERT INTO Delivery (OrderID, RecipientName, DeliveryAddress, ContactNumber) VALUES (@OrderID, @RecipientName, @DeliveryAddress, @ContactNumber)", con))
                     {

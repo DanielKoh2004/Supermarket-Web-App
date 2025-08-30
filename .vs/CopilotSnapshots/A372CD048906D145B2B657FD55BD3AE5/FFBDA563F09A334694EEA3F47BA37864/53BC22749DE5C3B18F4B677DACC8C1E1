@@ -45,7 +45,6 @@ namespace WebApplication1
                 lblError.Visible = true;
                 return;
             }
-            Session["CheckoutMethod"] = method;
             if (method == "delivery")
             {
                 if (string.IsNullOrWhiteSpace(txtName.Text) ||
@@ -56,10 +55,6 @@ namespace WebApplication1
                     lblError.Visible = true;
                     return;
                 }
-                Session["RecipientName"] = txtName.Text.Trim();
-                Session["DeliveryAddress"] = txtAddress.Text.Trim();
-                Session["ContactNumber"] = txtPhone.Text.Trim();
-                Session["PickupLocation"] = null;
             }
             else if (method == "pickup")
             {
@@ -69,10 +64,6 @@ namespace WebApplication1
                     lblError.Visible = true;
                     return;
                 }
-                Session["RecipientName"] = null;
-                Session["DeliveryAddress"] = null;
-                Session["ContactNumber"] = null;
-                Session["PickupLocation"] = ddlPickupLocation.SelectedValue;
             }
             // If all validation passes, redirect to payment
             Response.Redirect("Payment.aspx");

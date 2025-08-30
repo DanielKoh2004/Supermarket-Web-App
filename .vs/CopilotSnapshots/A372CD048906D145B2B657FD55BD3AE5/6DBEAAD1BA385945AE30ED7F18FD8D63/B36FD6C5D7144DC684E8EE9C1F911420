@@ -159,10 +159,10 @@ namespace WebApplication1
                 }
 
                 // Insert delivery info if applicable
-                string checkoutMethod = Session["CheckoutMethod"] != null ? Session["CheckoutMethod"].ToString() : "";
-                string recipientName = Session["RecipientName"] != null ? Session["RecipientName"].ToString() : "";
-                string deliveryAddress = Session["DeliveryAddress"] != null ? Session["DeliveryAddress"].ToString() : "";
-                string contactNumber = Session["ContactNumber"] != null ? Session["ContactNumber"].ToString() : "";
+                string checkoutMethod = Request.Form["checkoutMethod"]; // Get the checkout method (pickup or delivery)
+                string recipientName = Request.Form["recipientName"];
+                string deliveryAddress = Request.Form["deliveryAddress"];
+                string contactNumber = Request.Form["contactNumber"];
 
                 if (checkoutMethod == "delivery" && !string.IsNullOrEmpty(recipientName) && !string.IsNullOrEmpty(deliveryAddress))
                 {
