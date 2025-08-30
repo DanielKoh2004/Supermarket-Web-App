@@ -106,45 +106,27 @@
 
             <div class="section-title">Basic Information</div>
             <div class="form-group">
-                <label>Title</label>
-                <select>
-                    <option>Mr.</option>
-                    <option>Mrs.</option>
-                    <option>Ms.</option>
-                </select>
+                <label for="txtName">Name</label>
+                <asp:TextBox ID="txtName" runat="server" CssClass="aspNetTextBox" />
             </div>
             <div class="form-group">
-                <label>Name</label>
-                <input type="text" />
-            </div>
-            <div class="form-group">
-                <label>Middle Name and Last Name</label>
-                <input type="text"/>
-            </div>
-            <div class="form-group">
-                <label>Race</label>
-                <select>
-                    <option>Chinese</option>
-                    <option>Malay</option>
-                    <option>Indian</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Date of Birth</label>
-                <input type="date" id="dob" name="dob" />
+                <label for="txtDOB">Date of Birth</label>
+                <asp:TextBox ID="txtDOB" runat="server" CssClass="aspNetTextBox" TextMode="Date" />
             </div>
 
             <div class="section-title">Contact Information</div>
             <div class="form-group">
-                <label>Mobile Number</label>
-                <input type="text"/>
+                <label for="txtMobile">Mobile Number</label>
+                <asp:TextBox ID="txtMobile" runat="server" CssClass="aspNetTextBox" />
             </div>
             <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" />
+                <label for="txtEmail">Email Address</label>
+                <asp:TextBox ID="txtEmail" runat="server" CssClass="aspNetTextBox" TextMode="Email" />
             </div>
 
-            <button class="save-button">Save</button>
+            <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="save-button" OnClick="btnSave_Click" />
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" CssClass="save-button" OnClick="btnLogout_Click" style="margin-top:30px;background-color:#e74c3c;" />
+            <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
         </div>
     </div>
 </asp:Content>

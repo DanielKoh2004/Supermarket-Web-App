@@ -14,7 +14,7 @@
             <a href="EditStaff.aspx">Edit Staff</a>
             <a href="AddProduct.aspx">Add Product</a>
             <a href="UpdateStock.aspx">Update Stock</a>
-            <a href="StockLevels.aspx">Stock Level</a>
+            <a href="StockLevels.aspx">Stock Level/Delete Stock</a>
             <a href="SalesReport.aspx">Sales Report</a>
             <a href="StaffReport.aspx">Staff Report</a>
         </div>

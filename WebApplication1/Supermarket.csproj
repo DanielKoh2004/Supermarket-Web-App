@@ -102,6 +102,7 @@
     <Content Include="img\payment\public.png" />
     <Content Include="img\payment\rakyat.jpg" />
     <Content Include="img\payment\tng.png" />
+    <Content Include="img\profile.jpg" />
     <Content Include="img\trolly.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="logo.png" />

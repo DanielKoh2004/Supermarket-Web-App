@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class Site : System.Web.UI.MasterPage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                if (Session["AccountID"] != null)
+                {
+                    btnLoginLogout.Visible = false;
+                    imgProfile.Visible = true;
+                    lblGreeting.Visible = true;
+                }
+                else
+                {
+                    btnLoginLogout.Visible = true;
+                    imgProfile.Visible = false;
+                    lblGreeting.Visible = false;
+                }
+            }
+        }
+
+        protected void imgProfile_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Profile.aspx");
+        }
+
+        protected void btnLoginLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Login.aspx");
+        }
+
+    }
+}

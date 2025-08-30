@@ -15,7 +15,7 @@
             <a href="EditStaff.aspx">Edit Staff</a>
             <a href="AddProduct.aspx">Add Product</a>
             <a href="UpdateStock.aspx">Update Stock</a>
-            <a href="StockLevels.aspx">Stock Level</a>
+            <a href="StockLevels.aspx">Stock Level/Delete Stock</a>
             <a href="SalesReport.aspx">Sales Report</a>
             <a href="StaffReport.aspx">Staff Report</a>
         </div>
@@ -36,15 +36,8 @@
 
             <label for="ddlRole">Role:</label><br />
             <asp:DropDownList ID="ddlRole" runat="server" CssClass="aspNetDropDown">
-                <asp:ListItem Text="Cashier" Value="Cashier" />
                 <asp:ListItem Text="Stock Manager" Value="Stock Manager" />
                 <asp:ListItem Text="Supervisor" Value="Supervisor" />
-            </asp:DropDownList><br /><br />
-
-            <label for="ddlStatus">Status:</label><br />
-            <asp:DropDownList ID="ddlStatus" runat="server" CssClass="aspNetDropDown">
-                <asp:ListItem Text="Active" Value="Active" />
-                <asp:ListItem Text="Inactive" Value="Inactive" />
             </asp:DropDownList><br /><br />
 
             <asp:Button ID="btnAdd" runat="server" Text="Add Staff" CssClass="btn-save" OnClick="btnAdd_Click" />

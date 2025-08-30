@@ -94,7 +94,7 @@
         .btn-save {
             display: block;
             width: 100%;
-            padding: 12px;
+            padding = 12px;
             background-color: #2f7d75;
             color: white;
             border: none;
@@ -181,6 +181,7 @@
         .nav-menu {
             list-style-type: none;
             margin: 0;
+            margin-right:30px;
             padding: 0;
             display: flex;
             gap: 30px;
@@ -465,9 +466,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="navbar-text">
-         <strong>Date & Time:</strong> <span id="liveDate"></span>
-        </div>
 
         <!-- Header -->
         <div class="header-banner">
@@ -487,7 +485,8 @@
 
             <div class="nav-auth">
                 <asp:Label ID="lblGreeting" runat="server" CssClass="greeting"></asp:Label>
-                <asp:Button ID="btnLoginLogout" runat="server" CssClass="login-btn" OnClick="btnLoginLogout_Click" />
+                <asp:Button ID="btnLogin" runat="server" CssClass="login-btn" Text="Login" OnClick="btnLogin_Click" />
+                <asp:ImageButton ID="imgProfile" runat="server" ImageUrl="~/img/PROFILE.png" CssClass="login-btn" OnClick="imgProfile_Click" Visible="false" Width="32px" Height="32px" />
             </div>
         </div>
 
@@ -501,22 +500,6 @@
         <div class="footer">
             © 2025 Happy Supermarket. All rights reserved.
         </div>
-<script>
-    function updateDateTime() {
-        const now = new Date();
-        const options = {
-            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-            hour: '2-digit', minute: '2-digit', second: '2-digit'
-        };
-        document.getElementById('liveDate').innerText = now.toLocaleString('en-US', options);
-    }
-
-    // Update immediately and then every second
-    window.onload = function () {
-        updateDateTime();
-        setInterval(updateDateTime, 1000);
-    };
-</script>
 
     </form>
 

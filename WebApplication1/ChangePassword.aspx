@@ -57,7 +57,7 @@
         }
         .form-group { margin-bottom: 20px; }
         label { display: block; font-weight: bold; margin-bottom: 5px; }
-        input {
+        input, .aspNetTextBox {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
@@ -101,12 +101,16 @@
         <div class="content-container">
             <h2>Change Password</h2>
             <div class="form-group">
-                <label for="newPassword">New Password</label>
-                <input type="password" id="newPassword" placeholder="Enter new password">
+                <label for="txtOldPassword">Old Password</label>
+                <asp:TextBox ID="txtOldPassword" runat="server" CssClass="aspNetTextBox" TextMode="Password" />
             </div>
             <div class="form-group">
-                <label for="confirmPassword">Confirm New Password</label>
-                <input type="password" id="confirmPassword" placeholder="Re-enter new password">
+                <label for="txtNewPassword">New Password</label>
+                <asp:TextBox ID="txtNewPassword" runat="server" CssClass="aspNetTextBox" TextMode="Password" />
+            </div>
+            <div class="form-group">
+                <label for="txtConfirmPassword">Confirm New Password</label>
+                <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="aspNetTextBox" TextMode="Password" />
             </div>
             <ul class="requirements">
                 <li>8–50 characters long</li>
@@ -115,7 +119,8 @@
                 <li>At least 1 special character (!, @, #, $, %)</li>
                 <li>No spaces allowed</li>
             </ul>
-            <button class="save-button">Update Password</button>
+            <asp:Button ID="btnUpdatePassword" runat="server" Text="Update Password" CssClass="save-button" OnClick="btnUpdatePassword_Click" />
+            <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
         </div>
     </div>
 </asp:Content>
