@@ -39,7 +39,13 @@ namespace WebApplication1
                 using (var cmd = new System.Data.SqlClient.SqlCommand(sql, con))
                 {
                     if (selectedDate == DateTime.MinValue)
-                        cmd.Parameters.AddWithValue("@SelectedDate", DBNull.Value);
+                    {
+                        lblSelectDate.Text = "Please select a date.";
+                        gvSalesReport.DataSource = null;
+                        gvSalesReport.DataBind();
+                        gvSalesReport.Caption = "";
+                        return;
+                    }
                     else
                         cmd.Parameters.AddWithValue("@SelectedDate", selectedDate.Date);
                     using (var da = new System.Data.SqlClient.SqlDataAdapter(cmd))

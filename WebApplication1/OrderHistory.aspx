@@ -103,8 +103,9 @@
                 <asp:BoundField DataField="OrderDate" HeaderText="Order Date" />
                 <asp:BoundField DataField="PurchasedItems" HeaderText="Purchased Items" />
                 <asp:BoundField DataField="TotalAmount" HeaderText="Total Amount" DataFormatString="{0:C}" />
+                <asp:BoundField DataField="PaymentMethod" HeaderText="Payment Method" />
                 <asp:BoundField DataField="DeliveryMethod" HeaderText="Method" />
-                <asp:TemplateField HeaderText="Address / Pickup Location">
+                <asp:TemplateField HeaderText="Delivery Address">
                     <ItemTemplate>
                         <%# Eval("DeliveryMethod").ToString() == "Delivery" ? Eval("DeliveryAddress") : "" %>
                     </ItemTemplate>

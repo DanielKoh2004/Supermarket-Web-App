@@ -33,19 +33,24 @@
             <a href="UpdateStock.aspx">Update Stock</a>
             <a href="StockLevels.aspx">Stock Level/Delete Stock</a>
             <a href="SalesReport.aspx">Sales Report</a>
-            <a href="StaffReport.aspx">Staff Report</a>
+            <a href="StaffReport.aspx">Staff List/Delete Staff</a>
         </div>
 
         <div class="main-content">
             <div class ="fade-in">
-            <h2>Staff Report</h2>
+            <h2>Staff List</h2>
 
-            <asp:GridView ID="gvStaffReport" runat="server" AutoGenerateColumns="False" CssClass="staff-report-grid" GridLines="None">
+            <asp:GridView ID="gvStaffReport" runat="server" AutoGenerateColumns="False" CssClass="staff-report-grid" GridLines="None" OnRowCommand="gvStaffReport_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="StaffID" HeaderText="Staff ID" />
                     <asp:BoundField DataField="Name" HeaderText="Name" />
                     <asp:BoundField DataField="Email" HeaderText="Email" />
                     <asp:BoundField DataField="Role" HeaderText="Role" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Button ID="btnDelete" runat="server" Text="Delete" CommandName="DeleteStaff" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick="return confirm('Are you sure you want to delete this staff?');" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
         </div>

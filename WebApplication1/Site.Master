@@ -481,6 +481,9 @@
                 <li><a href="AboutUs.aspx">About Us</a></li>
                 <li><a href="OrderHistory.aspx">Order History</a></li>
                 <li><a href="ShoppingCart.aspx">Cart</a></li>
+                <% if (Session["Role"] != null && Session["Role"].ToString() != "Customer") { %>
+                    <li><a href="Default.aspx">Admin</a></li>
+                <% } %>
             </ul>
 
             <div class="nav-auth">

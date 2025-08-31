@@ -123,6 +123,13 @@
         <div class="form-group">
             <label for="txtPassword">Password</label>
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-input" />
+            <ul class="requirements" style="margin-top:8px; margin-bottom:0; color:#666; font-size:13px;">
+                <li>8–50 characters long</li>
+                <li>Includes upper & lower case letters</li>
+                <li>At least 1 number</li>
+                <li>At least 1 special character (!, @, #, $, %)</li>
+                <li>No spaces allowed</li>
+            </ul>
         </div>
 
         <div class="form-group">

@@ -49,11 +49,11 @@ namespace WebApplication1
                             ).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS PurchasedItems,
                             o.TotalAmount,
                             CASE WHEN d.DeliveryID IS NOT NULL THEN 'Delivery' ELSE 'In-Store Pickup' END AS DeliveryMethod,
-                            ISNULL(d.RecipientName, '') AS RecipientName,
-                            ISNULL(d.DeliveryAddress, CASE WHEN d.DeliveryID IS NULL THEN 'In-Store Pickup' ELSE '' END) AS DeliveryAddress,
-                            ISNULL(d.ContactNumber, '') AS ContactNumber
+                            ISNULL(d.DeliveryAddress, '') AS DeliveryAddress,
+                            p.PaymentMethod
                         FROM [Order] o
                         LEFT JOIN Delivery d ON o.OrderID = d.OrderID
+                        LEFT JOIN Payment p ON o.OrderID = p.OrderID
                         WHERE o.CustomerID = @CustomerID
                         ORDER BY o.OrderDate DESC";
                     using (var cmd = new System.Data.SqlClient.SqlCommand(sql, con))
