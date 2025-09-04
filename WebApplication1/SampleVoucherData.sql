@@ -1,0 +1,10 @@
+INSERT INTO Voucher (VoucherCode, PointsRequired, DiscountAmount, IsActive) VALUES ('RM5OFF', 50, 5.00, 1);
+INSERT INTO Voucher (VoucherCode, PointsRequired, DiscountAmount, IsActive) VALUES ('RM10OFF', 100, 10.00, 1);
+INSERT INTO Voucher (VoucherCode, PointsRequired, DiscountAmount, IsActive) VALUES ('RM15OFF', 150, 15.00, 1);
+INSERT INTO Voucher (VoucherCode, PointsRequired, DiscountAmount, IsActive) VALUES ('RM20OFF', 200, 20.00, 1);
+INSERT INTO Voucher (VoucherCode, PointsRequired, DiscountAmount, IsActive) VALUES ('RM25OFF', 250, 25.00, 1);
+INSERT INTO Voucher (VoucherCode, PointsRequired, DiscountAmount, IsActive) VALUES ('RM30OFF', 300, 30.00, 1);
+INSERT INTO Voucher (VoucherCode, PointsRequired, DiscountAmount, IsActive) VALUES ('RM35OFF', 350, 35.00, 1);
+INSERT INTO Voucher (VoucherCode, PointsRequired, DiscountAmount, IsActive) VALUES ('RM40OFF', 400, 40.00, 1);
+INSERT INTO Voucher (VoucherCode, PointsRequired, DiscountAmount, IsActive) VALUES ('RM45OFF', 450, 45.00, 1);
+INSERT INTO Voucher (VoucherCode, PointsRequired, DiscountAmount, IsActive) VALUES ('RM50OFF', 500, 50.00, 1);

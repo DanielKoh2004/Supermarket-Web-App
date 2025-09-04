@@ -73,6 +73,7 @@
     <Content Include="AddStaff.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Checkout.aspx" />
+    <Content Include="ClaimVoucher.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="delete.png" />
     <Content Include="edit.png" />
@@ -112,6 +113,7 @@
     <Content Include="Profile.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="SalesReport.aspx" />
+    <Content Include="SampleVoucherData.sql" />
     <Content Include="ShoppingCart.aspx" />
     <Content Include="StaffReport.aspx" />
     <Content Include="StockLevels.aspx" />
@@ -157,6 +159,13 @@
       <DependentUpon>Checkout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cart_Item.cs" />
+    <Compile Include="ClaimVoucher.aspx.cs">
+      <DependentUpon>ClaimVoucher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClaimVoucher.aspx.designer.cs">
+      <DependentUpon>ClaimVoucher.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

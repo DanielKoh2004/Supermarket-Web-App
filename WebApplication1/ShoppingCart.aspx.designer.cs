@@ -42,6 +42,33 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.Label lblSubtotal;
 
         /// <summary>
+        /// pnlVoucher control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlVoucher;
+
+        /// <summary>
+        /// lblVoucherDiscount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVoucherDiscount;
+
+        /// <summary>
+        /// ddlVoucher control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlVoucher;
+
+        /// <summary>
         /// lblMessage control.
         /// </summary>
         /// <remarks>

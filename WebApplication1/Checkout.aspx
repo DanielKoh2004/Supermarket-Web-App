@@ -74,6 +74,7 @@
             </asp:DropDownList>
         </asp:Panel>
 
+
         <div class="section">
             <asp:Button ID="btnConfirm" runat="server" Text="Confirm Order" CssClass="form-button" OnClientClick="return validateCheckout();" OnClick="btnConfirm_Click1" />
             <asp:Label ID="lblError" runat="server" ForeColor="Red" Visible="false" CssClass="form-label"></asp:Label>

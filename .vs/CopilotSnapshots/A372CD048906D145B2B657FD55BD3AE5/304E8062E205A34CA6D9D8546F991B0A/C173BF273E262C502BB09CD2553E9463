@@ -1,0 +1,114 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+
+namespace WebApplication1
+{
+    public partial class ClaimVoucher : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ClaimButton_Click(object sender, EventArgs e)
+        {
+            int voucherId = ...; // selected voucher
+            int pointsRequired = ...; // from voucher
+            int customerId = ...; // get from session or context
+
+            // Check if user has enough points
+            using (var con = new SqlConnection("your_connection_string"))
+            {
+                con.Open();
+                using (var cmd = new SqlCommand("SELECT MemberPoints FROM Customer WHERE CustomerID=@CustomerID", con))
+                {
+                    cmd.Parameters.AddWithValue("@CustomerID", customerId);
+                    int memberPoints = (int)cmd.ExecuteScalar();
+                    if (memberPoints >= pointsRequired)
+                    {
+                        // Deduct points
+                        using (var cmd2 = new SqlCommand("UPDATE Customer SET MemberPoints = MemberPoints - @Points WHERE CustomerID = @CustomerID", con))
+                        {
+                            cmd2.Parameters.AddWithValue("@Points", pointsRequired);
+                            cmd2.Parameters.AddWithValue("@CustomerID", customerId);
+                            cmd2.ExecuteNonQuery();
+                        }
+                        // Add to CustomerVoucher
+                        using (var cmd3 = new SqlCommand("INSERT INTO CustomerVoucher (CustomerID, VoucherID) VALUES (@CustomerID, @VoucherID)", con))
+                        {
+                            cmd3.Parameters.AddWithValue("@CustomerID", customerId);
+                            cmd3.Parameters.AddWithValue("@VoucherID", voucherId);
+                            cmd3.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+        }
+
+        protected void gvVouchers_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Claim")
+            {
+                int voucherId = Convert.ToInt32(e.CommandArgument);
+                int customerId = Session["CustomerID"] != null ? Convert.ToInt32(Session["CustomerID"]) : 0;
+                if (customerId == 0)
+                {
+                    lblMessage.Text = "Please log in to claim a voucher.";
+                    return;
+                }
+                string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+                using (var con = new SqlConnection(connStr))
+                {
+                    con.Open();
+                    // Get points required for voucher
+                    int pointsRequired = 0;
+                    using (var cmd = new SqlCommand("SELECT PointsRequired FROM Voucher WHERE VoucherID=@VoucherID", con))
+                    {
+                        cmd.Parameters.AddWithValue("@VoucherID", voucherId);
+                        var result = cmd.ExecuteScalar();
+                        if (result != null) pointsRequired = Convert.ToInt32(result);
+                    }
+                    // Get current member points
+                    int memberPoints = 0;
+                    using (var cmd = new SqlCommand("SELECT MemberPoints FROM Customer WHERE CustomerID=@CustomerID", con))
+                    {
+                        cmd.Parameters.AddWithValue("@CustomerID", customerId);
+                        var result = cmd.ExecuteScalar();
+                        if (result != null) memberPoints = Convert.ToInt32(result);
+                    }
+                    if (memberPoints >= pointsRequired)
+                    {
+                        // Deduct points
+                        using (var cmd2 = new SqlCommand("UPDATE Customer SET MemberPoints = MemberPoints - @Points WHERE CustomerID = @CustomerID", con))
+                        {
+                            cmd2.Parameters.AddWithValue("@Points", pointsRequired);
+                            cmd2.Parameters.AddWithValue("@CustomerID", customerId);
+                            cmd2.ExecuteNonQuery();
+                        }
+                        // Add to CustomerVoucher
+                        using (var cmd3 = new SqlCommand("INSERT INTO CustomerVoucher (CustomerID, VoucherID) VALUES (@CustomerID, @VoucherID)", con))
+                        {
+                            cmd3.Parameters.AddWithValue("@CustomerID", customerId);
+                            cmd3.Parameters.AddWithValue("@VoucherID", voucherId);
+                            cmd3.ExecuteNonQuery();
+                        }
+                        lblMessage.ForeColor = System.Drawing.Color.Green;
+                        lblMessage.Text = "Voucher claimed successfully!";
+                    }
+                    else
+                    {
+                        lblMessage.ForeColor = System.Drawing.Color.Red;
+                        lblMessage.Text = "Not enough points to claim this voucher.";
+                    }
+                }
+                // Refresh voucher grid
+                BindVouchers();
+            }
+        }
+    }
+}

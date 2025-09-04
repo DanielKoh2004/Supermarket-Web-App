@@ -1,0 +1,136 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class Checkout : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                pnlDelivery.Visible = false;
+                pnlPickup.Visible = false;
+                BindClaimedVouchers();
+            }
+        }
+
+        private void BindClaimedVouchers()
+        {
+            int accountId = Session["AccountID"] != null ? Convert.ToInt32(Session["AccountID"]) : 0;
+            int customerId = 0;
+            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+            using (var con = new System.Data.SqlClient.SqlConnection(connStr))
+            {
+                con.Open();
+                using (var cmd = new System.Data.SqlClient.SqlCommand("SELECT CustomerID FROM Customer WHERE AccountID=@AccountID", con))
+                {
+                    cmd.Parameters.AddWithValue("@AccountID", accountId);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value) customerId = Convert.ToInt32(result);
+                }
+                using (var cmd = new System.Data.SqlClient.SqlCommand(@"
+                    SELECT cv.CustomerVoucherID, v.VoucherID, v.VoucherCode, v.DiscountAmount
+                    FROM CustomerVoucher cv
+                    JOIN Voucher v ON cv.VoucherID = v.VoucherID
+                    WHERE cv.CustomerID = @CustomerID AND cv.IsUsed = 0", con))
+                {
+                    cmd.Parameters.AddWithValue("@CustomerID", customerId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        ddlVoucher.Items.Clear();
+                        ddlVoucher.Items.Add(new ListItem("Select voucher...", ""));
+                        while (reader.Read())
+                        {
+                            string text = reader["VoucherCode"] + " (RM" + Convert.ToDecimal(reader["DiscountAmount"]).ToString("F2") + ")";
+                            string value = reader["CustomerVoucherID"].ToString() + "," + reader["VoucherID"].ToString();
+                            ddlVoucher.Items.Add(new ListItem(text, value));
+                        }
+                    }
+                }
+            }
+        }
+
+        protected void rblMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string method = rblMethod.SelectedValue;
+
+            if (method == "delivery")
+            {
+                pnlDelivery.Visible = true;
+                pnlPickup.Visible = false;
+            }
+            else if (method == "pickup")
+            {
+                pnlPickup.Visible = true;
+                pnlDelivery.Visible = false;
+            }
+        }
+
+        protected void btnConfirm_Click1(object sender, EventArgs e)
+        {
+            string method = rblMethod.SelectedValue;
+            lblError.Visible = false;
+            lblError.Text = "";
+            if (string.IsNullOrEmpty(method))
+            {
+                lblError.Text = "Please select a checkout method.";
+                lblError.Visible = true;
+                return;
+            }
+            Session["CheckoutMethod"] = method;
+            if (method == "delivery")
+            {
+                if (string.IsNullOrWhiteSpace(txtName.Text) ||
+                    string.IsNullOrWhiteSpace(txtAddress.Text) ||
+                    string.IsNullOrWhiteSpace(txtPhone.Text))
+                {
+                    lblError.Text = "Please fill in all delivery fields.";
+                    lblError.Visible = true;
+                    return;
+                }
+                Session["RecipientName"] = txtName.Text.Trim();
+                Session["DeliveryAddress"] = txtAddress.Text.Trim();
+                Session["ContactNumber"] = txtPhone.Text.Trim();
+                Session["PickupLocation"] = null;
+            }
+            else if (method == "pickup")
+            {
+                if (string.IsNullOrWhiteSpace(ddlPickupLocation.SelectedValue))
+                {
+                    lblError.Text = "Please select a pickup location.";
+                    lblError.Visible = true;
+                    return;
+                }
+                Session["RecipientName"] = null;
+                Session["DeliveryAddress"] = null;
+                Session["ContactNumber"] = null;
+                Session["PickupLocation"] = ddlPickupLocation.SelectedValue;
+            }
+            // Save selected voucher to session
+            if (!string.IsNullOrEmpty(ddlVoucher.SelectedValue))
+            {
+                var parts = ddlVoucher.SelectedValue.Split(',');
+                Session["SelectedCustomerVoucherID"] = parts[0];
+                Session["SelectedVoucherID"] = parts[1];
+            }
+            else
+            {
+                Session["SelectedCustomerVoucherID"] = null;
+                Session["SelectedVoucherID"] = null;
+            }
+            // If all validation passes, redirect to payment
+            Response.Redirect("Payment.aspx");      
+
+        }
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ShoppingCart.aspx");
+
+        }
+    }
+}

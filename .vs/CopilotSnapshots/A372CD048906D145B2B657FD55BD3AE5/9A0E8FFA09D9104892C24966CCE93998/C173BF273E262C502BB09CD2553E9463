@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+
+namespace WebApplication1
+{
+    public partial class ClaimVoucher : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ClaimButton_Click(object sender, EventArgs e)
+        {
+            int voucherId = ...; // selected voucher
+            int pointsRequired = ...; // from voucher
+            int customerId = ...; // get from session or context
+
+            // Check if user has enough points
+            using (var con = new SqlConnection("your_connection_string"))
+            {
+                con.Open();
+                using (var cmd = new SqlCommand("SELECT MemberPoints FROM Customer WHERE CustomerID=@CustomerID", con))
+                {
+                    cmd.Parameters.AddWithValue("@CustomerID", customerId);
+                    int memberPoints = (int)cmd.ExecuteScalar();
+                    if (memberPoints >= pointsRequired)
+                    {
+                        // Deduct points
+                        using (var cmd2 = new SqlCommand("UPDATE Customer SET MemberPoints = MemberPoints - @Points WHERE CustomerID = @CustomerID", con))
+                        {
+                            cmd2.Parameters.AddWithValue("@Points", pointsRequired);
+                            cmd2.Parameters.AddWithValue("@CustomerID", customerId);
+                            cmd2.ExecuteNonQuery();
+                        }
+                        // Add to CustomerVoucher
+                        using (var cmd3 = new SqlCommand("INSERT INTO CustomerVoucher (CustomerID, VoucherID) VALUES (@CustomerID, @VoucherID)", con))
+                        {
+                            cmd3.Parameters.AddWithValue("@CustomerID", customerId);
+                            cmd3.Parameters.AddWithValue("@VoucherID", voucherId);
+                            cmd3.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -107,7 +107,7 @@
                 <asp:BoundField DataField="DeliveryMethod" HeaderText="Method" />
                 <asp:TemplateField HeaderText="Delivery Address">
                     <ItemTemplate>
-                        <%# Eval("DeliveryMethod").ToString() == "Delivery" ? Eval("DeliveryAddress") : "" %>
+                        <%# Eval("DeliveryAddress") %>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

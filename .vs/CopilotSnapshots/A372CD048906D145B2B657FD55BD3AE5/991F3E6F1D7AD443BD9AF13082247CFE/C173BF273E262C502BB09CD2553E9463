@@ -1,0 +1,140 @@
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class ClaimVoucher : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                BindVouchers();
+            }
+        }
+
+        private int GetCustomerIdFromSession()
+        {
+            int accountId = Session["AccountID"] != null ? Convert.ToInt32(Session["AccountID"]) : 0;
+            if (accountId == 0) return 0;
+            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+            using (var con = new SqlConnection(connStr))
+            {
+                con.Open();
+                using (var cmd = new SqlCommand("SELECT CustomerID FROM Customer WHERE AccountID=@AccountID", con))
+                {
+                    cmd.Parameters.AddWithValue("@AccountID", accountId);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null) return Convert.ToInt32(result);
+                }
+            }
+            return 0;
+        }
+
+        private void BindVouchers()
+        {
+            int customerId = GetCustomerIdFromSession();
+            if (customerId == 0)
+            {
+                lblPoints.Text = "Please log in to claim a voucher.";
+                gvVouchers.DataSource = null;
+                gvVouchers.DataBind();
+                return;
+            }
+            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+            int memberPoints = 0;
+            using (var con = new SqlConnection(connStr))
+            {
+                con.Open();
+                // Get member points
+                using (var cmd = new SqlCommand("SELECT MemberPoints FROM Customer WHERE CustomerID=@CustomerID", con))
+                {
+                    cmd.Parameters.AddWithValue("@CustomerID", customerId);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value) memberPoints = Convert.ToInt32(result);
+                }
+                // Get vouchers and claimed status
+                using (var cmd = new SqlCommand(@"
+                    SELECT v.VoucherID, v.VoucherCode, v.PointsRequired, v.DiscountAmount,
+                           CASE WHEN cv.CustomerVoucherID IS NULL THEN 0 ELSE 1 END AS IsClaimed
+                    FROM Voucher v
+                    LEFT JOIN CustomerVoucher cv ON v.VoucherID = cv.VoucherID AND cv.CustomerID = @CustomerID
+                    WHERE v.IsActive = 1", con))
+                {
+                    cmd.Parameters.AddWithValue("@CustomerID", customerId);
+                    using (var adapter = new SqlDataAdapter(cmd))
+                    {
+                        var dt = new DataTable();
+                        adapter.Fill(dt);
+                        gvVouchers.DataSource = dt;
+                        gvVouchers.DataBind();
+                    }
+                }
+            }
+            lblPoints.Text = "Your Points: " + memberPoints;
+        }
+
+        protected void gvVouchers_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Claim")
+            {
+                int voucherId = Convert.ToInt32(e.CommandArgument);
+                int customerId = GetCustomerIdFromSession();
+                if (customerId == 0)
+                {
+                    lblMessage.Text = "Please log in to claim a voucher.";
+                    return;
+                }
+                string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+                using (var con = new SqlConnection(connStr))
+                {
+                    con.Open();
+                    // Get points required for voucher
+                    int pointsRequired = 0;
+                    using (var cmd = new SqlCommand("SELECT PointsRequired FROM Voucher WHERE VoucherID=@VoucherID", con))
+                    {
+                        cmd.Parameters.AddWithValue("@VoucherID", voucherId);
+                        var result = cmd.ExecuteScalar();
+                        if (result != null) pointsRequired = Convert.ToInt32(result);
+                    }
+                    // Get current member points
+                    int memberPoints = 0;
+                    using (var cmd = new SqlCommand("SELECT MemberPoints FROM Customer WHERE CustomerID=@CustomerID", con))
+                    {
+                        cmd.Parameters.AddWithValue("@CustomerID", customerId);
+                        var result = cmd.ExecuteScalar();
+                        if (result != null && result != DBNull.Value) memberPoints = Convert.ToInt32(result);
+                    }
+                    if (memberPoints >= pointsRequired)
+                    {
+                        // Deduct points
+                        using (var cmd2 = new SqlCommand("UPDATE Customer SET MemberPoints = MemberPoints - @Points WHERE CustomerID = @CustomerID", con))
+                        {
+                            cmd2.Parameters.AddWithValue("@Points", pointsRequired);
+                            cmd2.Parameters.AddWithValue("@CustomerID", customerId);
+                            cmd2.ExecuteNonQuery();
+                        }
+                        // Add to CustomerVoucher
+                        using (var cmd3 = new SqlCommand("INSERT INTO CustomerVoucher (CustomerID, VoucherID) VALUES (@CustomerID, @VoucherID)", con))
+                        {
+                            cmd3.Parameters.AddWithValue("@CustomerID", customerId);
+                            cmd3.Parameters.AddWithValue("@VoucherID", voucherId);
+                            cmd3.ExecuteNonQuery();
+                        }
+                        lblMessage.ForeColor = System.Drawing.Color.Green;
+                        lblMessage.Text = "Voucher claimed successfully!";
+                    }
+                    else
+                    {
+                        lblMessage.ForeColor = System.Drawing.Color.Red;
+                        lblMessage.Text = "Not enough points to claim this voucher.";
+                    }
+                }
+                BindVouchers();
+            }
+        }
+    }
+}

@@ -47,12 +47,13 @@ namespace WebApplication1
                                 WHERE oi.OrderID = o.OrderID
                                 FOR XML PATH(''), TYPE
                             ).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS PurchasedItems,
-                            o.TotalAmount,
+                            CASE WHEN o.TotalAmount < 0 THEN 0 ELSE o.TotalAmount END AS TotalAmount,
                             CASE WHEN d.DeliveryID IS NOT NULL THEN 'Delivery' ELSE 'In-Store Pickup' END AS DeliveryMethod,
-                            ISNULL(d.DeliveryAddress, '') AS DeliveryAddress,
+                            CASE WHEN d.DeliveryID IS NOT NULL THEN ISNULL(d.DeliveryAddress, '') ELSE ISNULL(pu.PickupLocation, '') END AS DeliveryAddress,
                             p.PaymentMethod
                         FROM [Order] o
                         LEFT JOIN Delivery d ON o.OrderID = d.OrderID
+                        LEFT JOIN Pickup pu ON o.OrderID = pu.OrderID
                         LEFT JOIN Payment p ON o.OrderID = p.OrderID
                         WHERE o.CustomerID = @CustomerID
                         ORDER BY o.OrderDate DESC";

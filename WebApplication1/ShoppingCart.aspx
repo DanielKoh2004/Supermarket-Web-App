@@ -140,6 +140,15 @@
         <div style="text-align:right; font-size:18px; margin-top:20px; margin-bottom:10px;">
             Subtotal: <asp:Label ID="lblSubtotal" runat="server" Text="" ForeColor="Black" Font-Bold="True" />
         </div>
+        <asp:Panel ID="pnlVoucher" runat="server" CssClass="section" style="margin-bottom:20px;">
+            <div style="margin-top:10px; font-size:16px; color:#2c7a7b;">
+                <asp:Label ID="lblVoucherDiscount" runat="server" />
+            </div>
+            <h3 style="margin-top:20px;">Apply Voucher</h3>
+            <asp:DropDownList ID="ddlVoucher" runat="server" CssClass="form-input" AutoPostBack="true" OnSelectedIndexChanged="ddlVoucher_SelectedIndexChanged">
+                <asp:ListItem Text="Select voucher..." Value=""></asp:ListItem>
+            </asp:DropDownList>
+        </asp:Panel>
         <div class="cart-actions">
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" Font-Bold="True" />
             <asp:Button ID="btnCheckout" runat="server" Text="Checkout" CssClass="btn-checkout" OnClick="btnCheckout_Click" />
