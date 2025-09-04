@@ -27,7 +27,6 @@
         <% } %>
     </div>
 
-        <!-- Main Content -->
         <div class="main-content">
             <div class ="fade-in">
             <h2>Staff Management</h2>
@@ -42,7 +41,7 @@
                 </div>
                 <div class="staff-button">
                     <img src="delete.png" alt="Delete" />
-                    <asp:Button ID="btnDeleteStaff" runat="server" Text="Delete Staff" PostBackUrl="DeleteStaff.aspx" CssClass="staff-btn" />
+                    <asp:Button ID="btnDeleteStaff" runat="server" Text="Delete Staff" PostBackUrl="StaffReport.aspx" CssClass="staff-btn" />
                 </div>
             </div>
         </div>

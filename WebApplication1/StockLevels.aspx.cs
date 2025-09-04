@@ -31,11 +31,21 @@ namespace WebApplication1
         {
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-                string query = "DELETE FROM Item WHERE ItemID = @ItemID";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@ItemID", itemId);
                 conn.Open();
-                cmd.ExecuteNonQuery();
+                // First delete related order items
+                string deleteOrderItemQuery = "DELETE FROM OrderItem WHERE ItemID = @ItemID";
+                using (SqlCommand cmdOrderItem = new SqlCommand(deleteOrderItemQuery, conn))
+                {
+                    cmdOrderItem.Parameters.AddWithValue("@ItemID", itemId);
+                    cmdOrderItem.ExecuteNonQuery();
+                }
+                // Then delete the item itself
+                string deleteItemQuery = "DELETE FROM Item WHERE ItemID = @ItemID";
+                using (SqlCommand cmdItem = new SqlCommand(deleteItemQuery, conn))
+                {
+                    cmdItem.Parameters.AddWithValue("@ItemID", itemId);
+                    cmdItem.ExecuteNonQuery();
+                }
             }
         }
 
