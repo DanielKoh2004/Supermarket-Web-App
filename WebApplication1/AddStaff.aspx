@@ -40,6 +40,39 @@
                 <asp:ListItem Text="Supervisor" Value="Supervisor" />
             </asp:DropDownList><br /><br />
 
+            <div class="form-group">
+                <label>Secret Question 1:</label>
+                <asp:DropDownList ID="ddlSecretQuestion1" runat="server" CssClass="form-input">
+                    <asp:ListItem Text="What is your mother's maiden name?" />
+                    <asp:ListItem Text="What was your first pet's name?" />
+                    <asp:ListItem Text="What is your favorite food?" />
+                </asp:DropDownList>
+                <asp:TextBox ID="txtSecretAnswer1" runat="server" CssClass="form-input" placeholder="Answer 1" />
+                <br />
+            </div>
+
+            <div class="form-group">
+                <label>Secret Question 2:</label>
+                <asp:DropDownList ID="ddlSecretQuestion2" runat="server" CssClass="form-input">
+                    <asp:ListItem Text="What is your birthplace?" />
+                    <asp:ListItem Text="What is your favorite color?" />
+                    <asp:ListItem Text="What is your best friend's name?" />
+                </asp:DropDownList>
+                <asp:TextBox ID="txtSecretAnswer2" runat="server" CssClass="form-input" placeholder="Answer 2" />
+                <br />
+            </div>
+
+            <div class="form-group">
+                <label>Secret Question 3:</label>
+                <asp:DropDownList ID="ddlSecretQuestion3" runat="server" CssClass="form-input">
+                    <asp:ListItem Text="What is your dream job?" />
+                    <asp:ListItem Text="What is your favorite movie?" />
+                    <asp:ListItem Text="What is your favorite sport?" />
+                </asp:DropDownList>
+                <asp:TextBox ID="txtSecretAnswer3" runat="server" CssClass="form-input" placeholder="Answer 3" />
+                <br />
+            </div>
+
             <asp:Button ID="btnAdd" runat="server" Text="Add Staff" CssClass="btn-save" OnClick="btnAdd_Click" />
             <br /><br />
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />

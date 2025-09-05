@@ -103,9 +103,9 @@
 </asp:Content>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
-
+    <asp:ImageButton ID="ImageButton1" runat="server" Height="44px" Width="50px" ImageUrl="~/img/back.png"  OnClick="btnBack_Click" />
     <div class="auto-style2">Your Cart</div>
-    <asp:ImageButton ID="ImageButton1" runat="server" Height="50px" Width="56px" ImageUrl="~/img/back.png" OnClick="btnBack_Click"/>
+
     <div class="cart-wrapper">
         <table class="cart-table">
             <thead>

@@ -42,7 +42,7 @@
 </asp:Content>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
-        <asp:ImageButton ID="ImageButton1" runat="server" Height="51px" Width="51px" ImageUrl="~/img/back.png" OnClick="btnBack_Click"/>
+    <asp:ImageButton ID="ImageButton1" runat="server" Height="44px" Width="50px" ImageUrl="~/img/back.png"  OnClick="btnBack_Click" />
 
         <div class="section">
             <h2>Choose Checkout Method</h2>
