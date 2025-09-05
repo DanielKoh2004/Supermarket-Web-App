@@ -1,0 +1,207 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using WebApplication1.Models;
+
+namespace WebApplication1
+{
+    public partial class Menu : System.Web.UI.Page
+    {
+        string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                LoadMenuItems(); // Load all items first time
+            }
+        }
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.Trim();
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                string query = "SELECT ItemID, ItemName, Category, UnitPrice, StockQuantity, ImageFile FROM Item " +
+                               "WHERE ItemName LIKE @Keyword OR Category LIKE @Keyword";
+
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                da.SelectCommand.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                rptMenu.DataSource = dt;
+                rptMenu.DataBind();
+            }
+        }
+
+        protected void imgCart_Click(object sender, ImageClickEventArgs e)
+        {
+            // Navigate to the shopping cart page
+            Response.Redirect("~/ShoppingCart.aspx");
+        }
+
+        private void LoadMenuItems(string category = "")
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                string query = "SELECT ItemID, ItemName, Category, UnitPrice, StockQuantity, ImageFile FROM Item";
+
+                if (!string.IsNullOrEmpty(category))
+                {
+                    query += " WHERE Category = @Category";
+                }
+
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+
+                if (!string.IsNullOrEmpty(category))
+                {
+                    da.SelectCommand.Parameters.AddWithValue("@Category", category);
+                }
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                rptMenu.DataSource = dt;
+                rptMenu.DataBind();
+            }
+        }
+
+        // 🔹 Dropdown filter event
+        protected void ddlCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedCategory = ddlCategory.SelectedValue;
+
+            if (string.IsNullOrEmpty(selectedCategory))
+            {
+                LoadMenuItems(); // All items
+            }
+            else
+            {
+                LoadMenuItems(selectedCategory); // Filtered items
+            }
+        }
+
+        // 🔹 Add to Cart button
+        protected void rptMenu_ItemCommand(object source, RepeaterCommandEventArgs e)           
+        {
+            if (e.CommandName == "add")
+            {
+                int itemId = Convert.ToInt32(e.CommandArgument);
+                int accountId = Convert.ToInt32(Session["AccountID"]); // Must store AccountID after login
+
+                // Check if accountId is valid
+                if (accountId <= 0)
+                {
+                    lblSuccess.Text = "❌ Please log in to add items to your cart.";
+                    return;
+                }
+
+                using (SqlConnection con = new SqlConnection(connStr))
+                {
+                    con.Open();
+
+                    // Check stock before adding to cart
+                    string stockQuery = "SELECT StockQuantity FROM Item WHERE ItemID=@ItemID";
+                    SqlCommand stockCmd = new SqlCommand(stockQuery, con);
+                    stockCmd.Parameters.AddWithValue("@ItemID", itemId);
+                    int stock = Convert.ToInt32(stockCmd.ExecuteScalar());
+                    if (stock <= 0)
+                    {
+                        lblSuccess.Text = "❌ This item is out of stock.";
+                        return;
+                    }
+
+                    // 1. Check if user already has a cart
+                    string cartQuery = "SELECT CartID FROM Cart WHERE AccountID=@AccountID";
+                    SqlCommand cmd = new SqlCommand(cartQuery, con);
+                    cmd.Parameters.AddWithValue("@AccountID", accountId);
+                    object cartIdObj = cmd.ExecuteScalar();
+
+                    int cartId;
+                    if (cartIdObj == null)
+                    {
+                        // Create new cart (no CreatedDate)
+                        string insertCart = "INSERT INTO Cart (AccountID) OUTPUT INSERTED.CartID VALUES (@AccountID)";
+                        SqlCommand cmdInsert = new SqlCommand(insertCart, con);
+                        cmdInsert.Parameters.AddWithValue("@AccountID", accountId);
+                        cartId = (int)cmdInsert.ExecuteScalar();
+                    }
+                    else
+                    {
+                        cartId = (int)cartIdObj;
+                    }
+
+                    // 2. Check if item already in cart
+                    string itemCheck = "SELECT Cart_ItemID, ItemQuantity FROM Cart_Item WHERE CartID=@CartID AND ItemID=@ItemID";
+                    SqlCommand cmdItem = new SqlCommand(itemCheck, con);
+                    cmdItem.Parameters.AddWithValue("@CartID", cartId);
+                    cmdItem.Parameters.AddWithValue("@ItemID", itemId);
+
+                    SqlDataReader rdr = cmdItem.ExecuteReader();
+                    if (rdr.Read())
+                    {
+                        // Already in cart → update quantity
+                        int currentQty = Convert.ToInt32(rdr["ItemQuantity"]);
+                        int cartItemId = Convert.ToInt32(rdr["Cart_ItemID"]);
+                        rdr.Close();
+
+                        // Check if enough stock for new quantity
+                        if (currentQty + 1 > stock)
+                        {
+                            lblSuccess.Text = "❌ Not enough stock for this item.";
+                            return;
+                        }
+
+                        string updateQty = "UPDATE Cart_Item SET ItemQuantity=@Qty WHERE Cart_ItemID=@Cart_ItemID";
+                        SqlCommand cmdUpdate = new SqlCommand(updateQty, con);
+                        cmdUpdate.Parameters.AddWithValue("@Qty", currentQty + 1);
+                        cmdUpdate.Parameters.AddWithValue("@Cart_ItemID", cartItemId);
+                        cmdUpdate.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        rdr.Close();
+                        // Not in cart → insert new row
+                        string insertItem = "INSERT INTO Cart_Item (CartID, ItemID, ItemQuantity) VALUES (@CartID, @ItemID, @Qty)";
+                        SqlCommand cmdInsertItem = new SqlCommand(insertItem, con);
+                        cmdInsertItem.Parameters.AddWithValue("@CartID", cartId);
+                        cmdInsertItem.Parameters.AddWithValue("@ItemID", itemId);
+                        cmdInsertItem.Parameters.AddWithValue("@Qty", 1);
+                        cmdInsertItem.ExecuteNonQuery();
+                    }
+                }
+
+                lblSuccess.Text = "✅ Added to cart successfully!";
+            }
+        }
+
+
+
+        protected void rptMenu_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                // Find stock label and button
+                Label lblOOS = (Label)e.Item.FindControl("lblOOS");
+                Button btnAddToCart = (Button)e.Item.FindControl("btnAddToCart");
+
+                // Get stock value from DataRowView
+                var drv = (System.Data.DataRowView)e.Item.DataItem;
+                int stock = Convert.ToInt32(drv["StockQuantity"]);
+
+                if (stock <= 0)
+                {
+                    // Show "Out of stock"
+                    lblOOS.Visible = true;
+                    btnAddToCart.Visible = false;
+                }
+            }
+        }
+
+    }
+}

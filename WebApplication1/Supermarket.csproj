@@ -71,6 +71,7 @@
     <Content Include="add.png" />
     <Content Include="AddProduct.aspx" />
     <Content Include="AddStaff.aspx" />
+    <Content Include="AdminMigratePasswords.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="Checkout.aspx" />
     <Content Include="ClaimVoucher.aspx" />
@@ -78,6 +79,7 @@
     <Content Include="delete.png" />
     <Content Include="edit.png" />
     <Content Include="EditStaff.aspx" />
+    <Content Include="ForgotPassword.aspx" />
     <Content Include="home.aspx" />
     <Content Include="img\back.png" />
     <Content Include="img\background.jpg" />
@@ -112,6 +114,7 @@
     <Content Include="Payment.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="ResetPassword.aspx" />
     <Content Include="SalesReport.aspx" />
     <Content Include="SampleVoucherData.sql" />
     <Content Include="ShoppingCart.aspx" />
@@ -143,6 +146,13 @@
     </Compile>
     <Compile Include="AddStaff.aspx.designer.cs">
       <DependentUpon>AddStaff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMigratePasswords.aspx.cs">
+      <DependentUpon>AdminMigratePasswords.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMigratePasswords.aspx.designer.cs">
+      <DependentUpon>AdminMigratePasswords.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
@@ -180,6 +190,14 @@
     <Compile Include="EditStaff.aspx.designer.cs">
       <DependentUpon>EditStaff.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -230,6 +248,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="SalesReport.aspx.cs">
       <DependentUpon>SalesReport.aspx</DependentUpon>
@@ -290,6 +315,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Web.sitemap" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

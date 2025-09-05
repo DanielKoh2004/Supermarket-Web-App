@@ -1,0 +1,85 @@
+using System;
+using System.Data.SqlClient;
+using WebApplication1.Helpers;
+
+namespace WebApplication1
+{
+    public partial class ForgotPassword : System.Web.UI.Page
+    {
+        string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+        int foundAccountId = 0;
+        protected void btnLoadQuestions_Click(object sender, EventArgs e)
+        {
+            lblResult.Text = "";
+            pnlQuestions.Visible = false;
+            string email = txtEmail.Text.Trim();
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT AccountID, SecretQuestion1, SecretQuestion2, SecretQuestion3 FROM Account WHERE Email=@Email", conn);
+                cmd.Parameters.AddWithValue("@Email", email);
+                var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    foundAccountId = Convert.ToInt32(reader["AccountID"]);
+                    lblQ1.Text = reader["SecretQuestion1"].ToString();
+                    lblQ2.Text = reader["SecretQuestion2"].ToString();
+                    lblQ3.Text = reader["SecretQuestion3"].ToString();
+                    pnlQuestions.Visible = true;
+                    ViewState["AccountID"] = foundAccountId;
+                }
+                else
+                {
+                    lblResult.Text = "Email not found.";
+                }
+                reader.Close();
+            }
+        }
+
+        protected void btnVerifyAnswers_Click(object sender, EventArgs e)
+        {
+            lblResult.Text = "";
+            int accountId = ViewState["AccountID"] != null ? Convert.ToInt32(ViewState["AccountID"]) : 0;
+            if (accountId == 0)
+            {
+                lblResult.Text = "Please load your secret questions first.";
+                return;
+            }
+            string a1 = txtA1.Text.Trim();
+            string a2 = txtA2.Text.Trim();
+            string a3 = txtA3.Text.Trim();
+
+            // Check answers
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT SecretAnswer1, SecretAnswer2, SecretAnswer3 FROM Account WHERE AccountID=@AccountID", conn);
+                cmd.Parameters.AddWithValue("@AccountID", accountId);
+                var reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    string ans1 = reader["SecretAnswer1"].ToString();
+                    string ans2 = reader["SecretAnswer2"].ToString();
+                    string ans3 = reader["SecretAnswer3"].ToString();
+                    if (a1.Equals(ans1, StringComparison.OrdinalIgnoreCase) &&
+                        a2.Equals(ans2, StringComparison.OrdinalIgnoreCase) &&
+                        a3.Equals(ans3, StringComparison.OrdinalIgnoreCase))
+                    {
+                        reader.Close();
+                        // Redirect to ResetPassword.aspx with accountId
+                        Response.Redirect("ResetPassword.aspx?accountId=" + accountId);
+                    }
+                    else
+                    {
+                        lblResult.Text = "One or more answers are incorrect.";
+                    }
+                }
+                else
+                {
+                    lblResult.Text = "Account not found.";
+                }
+                reader.Close();
+            }
+        }
+    }
+}

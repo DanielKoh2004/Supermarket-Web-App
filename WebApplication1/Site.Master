@@ -473,6 +473,7 @@
                 <img src="logo.png" alt="Happy Supermarket Logo" class="logo" />
                 <span class="portal-title">Happy SuperMarket</span>
             </div>
+            <asp:SiteMapPath ID="SiteMapPath1" runat="server" PathSeparator=" &gt; " CssClass="breadcrumb" />
         <!-- Sticky Navigation Bar -->
         <div class="navbar">
             <ul class="nav-menu">

@@ -124,6 +124,9 @@
         <p class="extra-link">
             Don’t have an account? <a href="Register.aspx">Register here</a>
         </p>
+        <p class="extra-link">
+            <a href="ForgotPassword.aspx">Forgot Password?</a>
+        </p>
     </div>
 
 </asp:Content>

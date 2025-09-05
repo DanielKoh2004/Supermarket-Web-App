@@ -1,0 +1,86 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class Register : System.Web.UI.Page
+    {
+        private bool IsValidPassword(string password)
+        {
+            if (string.IsNullOrWhiteSpace(password) || password.Length < 8 || password.Length > 50)
+                return false;
+            if (password.Contains(" "))
+                return false;
+            if (!Regex.IsMatch(password, @"[A-Z]")) // Uppercase
+                return false;
+            if (!Regex.IsMatch(password, @"[a-z]")) // Lowercase
+                return false;
+            if (!Regex.IsMatch(password, @"\d")) // Number
+                return false;
+            if (!Regex.IsMatch(password, @"[!@#$%]")) // Special char
+                return false;
+            return true;
+        }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.Text != txtConfirmPassword.Text)
+            {
+                lblError.Text = "Passwords do not match.";
+                return;
+            }
+            if (!IsValidPassword(txtPassword.Text))
+            {
+                lblError.Text = "Password does not meet requirements.";
+                return;
+            }
+            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+            string email = txtEmail.Text;
+            string password = txtPassword.Text;
+            string role = "Customer"; 
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM Account WHERE Email = @Email", conn);
+                checkCmd.Parameters.AddWithValue("@Email", email);
+                int count = (int)checkCmd.ExecuteScalar();
+                if (count > 0)
+                {
+                    // Show error message to user (e.g., Label control)
+                    lblError.Text = "Email already registered.";
+                    return;
+                }
+
+                SqlCommand cmd = new SqlCommand(
+                    "INSERT INTO Account (Email, Password, AccountType) OUTPUT INSERTED.AccountID VALUES (@Email, @Password, @AccountType)", conn);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Password", password);
+                cmd.Parameters.AddWithValue("@AccountType", "Customer");
+                int accountId = (int)cmd.ExecuteScalar();
+
+                // Insert into Customer
+                SqlCommand cmd2 = new SqlCommand(
+                    "INSERT INTO Customer (AccountID, Name, DateOfBirth, MobileNumber) VALUES (@AccountID,@Name, @DateOfBirth, @MobileNumber)", conn);
+                cmd2.Parameters.AddWithValue("@AccountID", accountId);
+                cmd2.Parameters.AddWithValue("@Name", txtUsername.Text); // Or txtName.Text if you have one
+                cmd2.Parameters.AddWithValue("@DateOfBirth", txtDateOfBirth.Text); // Add a TextBox for DateOfBirth
+                cmd2.Parameters.AddWithValue("@MobileNumber", txtMobileNumber.Text); // Add a TextBox for MobileNumber
+                cmd2.ExecuteNonQuery();
+            }
+
+            Response.Redirect("Home.aspx");
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

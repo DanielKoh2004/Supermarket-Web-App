@@ -78,6 +78,60 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.TextBox txtMobileNumber;
 
         /// <summary>
+        /// ddlSecretQuestion1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSecretQuestion1;
+
+        /// <summary>
+        /// txtSecretAnswer1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSecretAnswer1;
+
+        /// <summary>
+        /// ddlSecretQuestion2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSecretQuestion2;
+
+        /// <summary>
+        /// txtSecretAnswer2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSecretAnswer2;
+
+        /// <summary>
+        /// ddlSecretQuestion3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSecretQuestion3;
+
+        /// <summary>
+        /// txtSecretAnswer3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSecretAnswer3;
+
+        /// <summary>
         /// btnRegister control.
         /// </summary>
         /// <remarks>
