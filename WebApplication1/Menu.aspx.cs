@@ -10,30 +10,39 @@ namespace WebApplication1
 {
     public partial class Menu : System.Web.UI.Page
     {
+        // Connection string for database access
         string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
 
+        // Page load event handler
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Only load menu items on first page load, not on postbacks
             if (!IsPostBack)
             {
                 LoadMenuItems(); // Load all items first time
             }
         }
+
+        // Search button click event handler
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            // Get search keyword from textbox
             string keyword = txtSearch.Text.Trim();
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-                // Only search ItemName, and only match from the start of the name
+                // SQL query to search items by name (contains keyword)
                 string query = "SELECT ItemID, ItemName, Category, UnitPrice, StockQuantity, ImageFile FROM Item WHERE ItemName LIKE @Keyword";
 
+                // Create data adapter and set parameter for LIKE search
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 da.SelectCommand.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
 
+                // Fill DataTable with results
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
+                // Bind results to repeater for display
                 rptMenu.DataSource = dt;
                 rptMenu.DataBind();
             }
@@ -41,14 +50,15 @@ namespace WebApplication1
 
         protected void imgCart_Click(object sender, ImageClickEventArgs e)
         {
-            // Navigate to the shopping cart page
             Response.Redirect("~/ShoppingCart.aspx");
         }
 
+        // Load menu items, optionally filtered by category
         private void LoadMenuItems(string category = "")
         {
             using (SqlConnection conn = new SqlConnection(connStr))
             {
+                // SQL query to get all items or filter by category
                 string query = "SELECT ItemID, ItemName, Category, UnitPrice, StockQuantity, ImageFile FROM Item";
 
                 if (!string.IsNullOrEmpty(category))
@@ -56,24 +66,29 @@ namespace WebApplication1
                     query += " WHERE Category = @Category";
                 }
 
+                //executes query and retrieves results
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
 
+                // If filtering by category, add the category parameter to the query
                 if (!string.IsNullOrEmpty(category))
                 {
                     da.SelectCommand.Parameters.AddWithValue("@Category", category);
                 }
 
+                //create database to hold the results
                 DataTable dt = new DataTable();
-                da.Fill(dt);
+                da.Fill(dt); //fill in datatable with the result
 
+                // Bind results of datatable to repeater for display
                 rptMenu.DataSource = dt;
                 rptMenu.DataBind();
             }
         }
 
-        // 🔹 Dropdown filter event
+        // Category dropdown selection changed event handler
         protected void ddlCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Get selected category from dropdown
             string selectedCategory = ddlCategory.SelectedValue;
 
             if (string.IsNullOrEmpty(selectedCategory))
@@ -86,13 +101,16 @@ namespace WebApplication1
             }
         }
 
-        // 🔹 Add to Cart button
+        // Repeater item command event handler (Add to Cart button)
         protected void rptMenu_ItemCommand(object source, RepeaterCommandEventArgs e)           
         {
+            // Check if the command is 'add' (when click Add to Cart button)
             if (e.CommandName == "add")
             {
-                int itemId = Convert.ToInt32(e.CommandArgument);
-                int accountId = Convert.ToInt32(Session["AccountID"]); // Must store AccountID after login
+                int itemId = Convert.ToInt32(e.CommandArgument);  // Get item ID from command argument
+
+                int accountId = Convert.ToInt32(Session["AccountID"]);  // Get account ID from session (user must be logged in)
+
 
                 // Check if accountId is valid
                 if (accountId <= 0)
@@ -108,7 +126,7 @@ namespace WebApplication1
                     // Check stock before adding to cart
                     string stockQuery = "SELECT StockQuantity FROM Item WHERE ItemID=@ItemID";
                     SqlCommand stockCmd = new SqlCommand(stockQuery, con);
-                    stockCmd.Parameters.AddWithValue("@ItemID", itemId);
+                    stockCmd.Parameters.AddWithValue("@ItemID", itemId); // Add the item ID parameter to the command
                     int stock = Convert.ToInt32(stockCmd.ExecuteScalar());
                     if (stock <= 0)
                     {
@@ -157,11 +175,12 @@ namespace WebApplication1
                             return;
                         }
 
+                        // Update item quantity in cart
                         string updateQty = "UPDATE Cart_Item SET ItemQuantity=@Qty WHERE Cart_ItemID=@Cart_ItemID";
                         SqlCommand cmdUpdate = new SqlCommand(updateQty, con);
                         cmdUpdate.Parameters.AddWithValue("@Qty", currentQty + 1);
                         cmdUpdate.Parameters.AddWithValue("@Cart_ItemID", cartItemId);
-                        cmdUpdate.ExecuteNonQuery();
+                        cmdUpdate.ExecuteNonQuery(); //executes commadns without return value
                     }
                     else
                     {
@@ -176,27 +195,28 @@ namespace WebApplication1
                     }
                 }
 
+                // Show success message
                 lblSuccess.Text = "✅ Added to cart successfully!";
             }
         }
 
-
-
+        // Repeater item data bound event handler
         protected void rptMenu_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
+            // Only process data items (not header/footer)
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                // Find stock label and button
+                // Find stock label and button controls in the item
                 Label lblOOS = (Label)e.Item.FindControl("lblOOS");
                 Button btnAddToCart = (Button)e.Item.FindControl("btnAddToCart");
 
-                // Get stock value from DataRowView
+                // Get stock value from data item
                 var drv = (System.Data.DataRowView)e.Item.DataItem;
                 int stock = Convert.ToInt32(drv["StockQuantity"]);
 
+                // If out of stock, show label and hide button
                 if (stock <= 0)
                 {
-                    // Show "Out of stock"
                     lblOOS.Visible = true;
                     btnAddToCart.Visible = false;
                 }

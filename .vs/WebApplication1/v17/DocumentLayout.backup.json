@@ -3,24 +3,112 @@
   "WorkspaceRootPath": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\payment.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\payment.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\payment.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\payment.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\profile.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\profile.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\register.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\resetpassword.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\resetpassword.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\salesreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\salesreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\shoppingcart.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\shoppingcart.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\staffmanagement.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\staffmanagement.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\staffreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\staffreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\stocklevels.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\stocklevels.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\updatestock.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\updatestock.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\changepassword.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\changepassword.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\payment.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\payment.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\web.debug.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\web.debug.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\resetpassword.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\resetpassword.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\orderhistory.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\orderhistory.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\adminmigratepasswords.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\adminmigratepasswords.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\menu.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\menu.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\register.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\register.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\editstaff.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\editstaff.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\claimvoucher.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\claimvoucher.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\checkout.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\checkout.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\changepassword.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\changepassword.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\aboutus.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\aboutus.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\adminmigratepasswords.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\adminmigratepasswords.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\addstaff.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\addstaff.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\addproduct.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\addproduct.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|d:\\supermarket-asg\\supermarket-web-app\\webapplication1\\aboutus.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\aboutus.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\forgotpassword.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,6 +117,26 @@
     {
       "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\forgotpassword.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\forgotpassword.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\resetpassword.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\resetpassword.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\shoppingcart.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\shoppingcart.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\menu.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\menu.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\adminmigratepasswords.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\adminmigratepasswords.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\register.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\register.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
@@ -47,20 +155,8 @@
       "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\helpers\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\changepassword.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\changepassword.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\claimvoucher.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\claimvoucher.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\addstaff.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\addstaff.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\staffmanagement.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
@@ -71,31 +167,11 @@
       "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\staffreport.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\staffreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\staffreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\salesreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\salesreport.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\site.master.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\site.master.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\editstaff.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\editstaff.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\AppData\\Local\\Temp\\n55wntdi..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\updatestock.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\updatestock.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\addproduct.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\addproduct.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\addproduct.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -108,10 +184,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\editstaff.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\editstaff.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\webapplication1\\profile.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB1EA10-7A97-45CE-A749-B0BDD88CB67A}|WebApplication1\\Supermarket.csproj|solutionrelative:webapplication1\\profile.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -121,8 +193,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 12,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -139,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 12,
               "Title": "ChangePassword.aspx",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ChangePassword.aspx",
               "RelativeDocumentMoniker": "WebApplication1\\ChangePassword.aspx",
@@ -152,16 +232,320 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SalesReport.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\SalesReport.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\SalesReport.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\SalesReport.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\SalesReport.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T13:48:48.7Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "StaffReport.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\StaffReport.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\StaffReport.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\StaffReport.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\StaffReport.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-29T08:30:01.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "StaffManagement.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\StaffManagement.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\StaffManagement.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\StaffManagement.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\StaffManagement.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:14:22.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Site.Master.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Site.Master.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Site.Master.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Site.Master.cs",
+              "RelativeToolTip": "WebApplication1\\Site.Master.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-29T14:14:34.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ShoppingCart.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ShoppingCart.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\ShoppingCart.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ShoppingCart.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\ShoppingCart.aspx.cs",
+              "ViewState": "AgIAANkAAAAAAAAAAAAQwCMBAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T03:51:35.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ResetPassword.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ResetPassword.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\ResetPassword.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ResetPassword.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\ResetPassword.aspx.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:11:58.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Register.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Register.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Register.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Register.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\Register.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:11:00.088Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Profile.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Profile.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Profile.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Profile.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\Profile.aspx.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-30T02:27:53.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Payment.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Payment.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Payment.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Payment.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\Payment.aspx.cs",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:08:25.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "StockLevels.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\StockLevels.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\StockLevels.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\StockLevels.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\StockLevels.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:15:35.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UpdateStock.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\UpdateStock.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\UpdateStock.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\UpdateStock.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\UpdateStock.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-29T08:22:09.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "OrderHistory.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\OrderHistory.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\OrderHistory.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\OrderHistory.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\OrderHistory.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:07:27.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Web.Debug.config",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Web.Debug.config",
+              "RelativeDocumentMoniker": "WebApplication1\\Web.Debug.config",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Web.Debug.config",
+              "RelativeToolTip": "WebApplication1\\Web.Debug.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-09-07T14:16:37.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Login.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Login.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Login.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Login.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\Login.aspx.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:05:54.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Default.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Default.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Default.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Default.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\Default.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:04:11.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ClaimVoucher.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ClaimVoucher.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\ClaimVoucher.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ClaimVoucher.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\ClaimVoucher.aspx.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:03:01.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Checkout.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Checkout.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Checkout.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Checkout.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\Checkout.aspx.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T14:00:48.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AboutUs.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AboutUs.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\AboutUs.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AboutUs.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\AboutUs.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T13:51:43.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "AdminMigratePasswords.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AdminMigratePasswords.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\AdminMigratePasswords.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AdminMigratePasswords.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\AdminMigratePasswords.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-07T13:55:55.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AboutUs.aspx",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AboutUs.aspx",
+              "RelativeDocumentMoniker": "WebApplication1\\AboutUs.aspx",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AboutUs.aspx",
+              "RelativeToolTip": "WebApplication1\\AboutUs.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-07T13:51:41.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ForgotPassword.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ForgotPassword.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\ForgotPassword.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ForgotPassword.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\ForgotPassword.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T08:44:15.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "EditStaff.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\EditStaff.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\EditStaff.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\EditStaff.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\EditStaff.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-29T08:27:35.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Menu.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Menu.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Menu.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Menu.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\Menu.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIAAAAB0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-06T07:35:00.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ForgotPassword.aspx",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ForgotPassword.aspx",
+              "RelativeDocumentMoniker": "WebApplication1\\ForgotPassword.aspx",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ForgotPassword.aspx",
+              "RelativeToolTip": "WebApplication1\\ForgotPassword.aspx",
+              "LogicalView": "7651a702-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-05T08:44:14.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
               "Title": "ResetPassword.aspx",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ResetPassword.aspx",
               "RelativeDocumentMoniker": "WebApplication1\\ResetPassword.aspx",
@@ -169,23 +553,64 @@
               "RelativeToolTip": "WebApplication1\\ResetPassword.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-05T08:58:45.034Z"
+              "WhenOpened": "2025-09-05T08:58:45.034Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ForgotPassword.aspx",
-              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ForgotPassword.aspx",
-              "RelativeDocumentMoniker": "WebApplication1\\ForgotPassword.aspx",
-              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ForgotPassword.aspx",
-              "RelativeToolTip": "WebApplication1\\ForgotPassword.aspx",
+              "DocumentIndex": 25,
+              "Title": "AddProduct.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AddProduct.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\AddProduct.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AddProduct.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\AddProduct.aspx.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAAAE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-29T03:37:31.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ChangePassword.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ChangePassword.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\ChangePassword.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ChangePassword.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\ChangePassword.aspx.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAGYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-31T05:57:18.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ShoppingCart.aspx",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ShoppingCart.aspx",
+              "RelativeDocumentMoniker": "WebApplication1\\ShoppingCart.aspx",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ShoppingCart.aspx",
+              "RelativeToolTip": "WebApplication1\\ShoppingCart.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-05T08:44:14.395Z"
+              "WhenOpened": "2025-09-07T02:27:12.462Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 24,
+              "Title": "AddStaff.aspx.cs",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AddStaff.aspx.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\AddStaff.aspx.cs",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AddStaff.aspx.cs",
+              "RelativeToolTip": "WebApplication1\\AddStaff.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-31T07:09:30.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
               "Title": "AdminMigratePasswords.aspx",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AdminMigratePasswords.aspx",
               "RelativeDocumentMoniker": "WebApplication1\\AdminMigratePasswords.aspx",
@@ -193,23 +618,25 @@
               "RelativeToolTip": "WebApplication1\\AdminMigratePasswords.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-05T07:50:19.393Z"
+              "WhenOpened": "2025-09-05T07:50:19.393Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ForgotPassword.aspx.cs",
-              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ForgotPassword.aspx.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\ForgotPassword.aspx.cs",
-              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ForgotPassword.aspx.cs",
-              "RelativeToolTip": "WebApplication1\\ForgotPassword.aspx.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-05T08:44:15.564Z"
+              "DocumentIndex": 31,
+              "Title": "Menu.aspx",
+              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Menu.aspx",
+              "RelativeDocumentMoniker": "WebApplication1\\Menu.aspx",
+              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Menu.aspx",
+              "RelativeToolTip": "WebApplication1\\Menu.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-06T07:34:58.172Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 33,
               "Title": "Register.aspx.designer.cs",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Register.aspx.designer.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Register.aspx.designer.cs",
@@ -217,11 +644,12 @@
               "RelativeToolTip": "WebApplication1\\Register.aspx.designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-05T09:00:35.346Z"
+              "WhenOpened": "2025-09-05T09:00:35.346Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 34,
               "Title": "Login.aspx",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Login.aspx",
               "RelativeDocumentMoniker": "WebApplication1\\Login.aspx",
@@ -229,11 +657,12 @@
               "RelativeToolTip": "WebApplication1\\Login.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-05T08:48:51.697Z"
+              "WhenOpened": "2025-09-05T08:48:51.697Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 35,
               "Title": "Register.aspx",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Register.aspx",
               "RelativeDocumentMoniker": "WebApplication1\\Register.aspx",
@@ -241,11 +670,12 @@
               "RelativeToolTip": "WebApplication1\\Register.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-08-31T05:47:38.414Z"
+              "WhenOpened": "2025-08-31T05:47:38.414Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 37,
               "Title": "PasswordHelper.cs",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Helpers\\PasswordHelper.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Helpers\\PasswordHelper.cs",
@@ -253,11 +683,12 @@
               "RelativeToolTip": "WebApplication1\\Helpers\\PasswordHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-05T07:47:45.671Z"
+              "WhenOpened": "2025-09-05T07:47:45.671Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 36,
               "Title": "Web.config",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Web.config",
               "RelativeDocumentMoniker": "WebApplication1\\Web.config",
@@ -270,7 +701,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 38,
               "Title": "ClaimVoucher.aspx",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ClaimVoucher.aspx",
               "RelativeDocumentMoniker": "WebApplication1\\ClaimVoucher.aspx",
@@ -278,11 +709,12 @@
               "RelativeToolTip": "WebApplication1\\ClaimVoucher.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-04T14:00:41.434Z"
+              "WhenOpened": "2025-09-04T14:00:41.434Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 39,
               "Title": "StaffManagement.aspx",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\StaffManagement.aspx",
               "RelativeDocumentMoniker": "WebApplication1\\StaffManagement.aspx",
@@ -290,47 +722,12 @@
               "RelativeToolTip": "WebApplication1\\StaffManagement.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-08-30T02:06:09.302Z"
+              "WhenOpened": "2025-08-30T02:06:09.302Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Site.Master.cs",
-              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Site.Master.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\Site.Master.cs",
-              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Site.Master.cs",
-              "RelativeToolTip": "WebApplication1\\Site.Master.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T14:14:34.519Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ChangePassword.aspx.cs",
-              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ChangePassword.aspx.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\ChangePassword.aspx.cs",
-              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\ChangePassword.aspx.cs",
-              "RelativeToolTip": "WebApplication1\\ChangePassword.aspx.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAAAE4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T05:57:18.32Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AddStaff.aspx.cs",
-              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AddStaff.aspx.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\AddStaff.aspx.cs",
-              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AddStaff.aspx.cs",
-              "RelativeToolTip": "WebApplication1\\AddStaff.aspx.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-31T07:09:30.65Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 40,
               "Title": "StaffReport.aspx",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\StaffReport.aspx",
               "RelativeDocumentMoniker": "WebApplication1\\StaffReport.aspx",
@@ -338,35 +735,12 @@
               "RelativeToolTip": "WebApplication1\\StaffReport.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-08-29T08:28:44.704Z"
+              "WhenOpened": "2025-08-29T08:28:44.704Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "SalesReport.aspx.cs",
-              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\SalesReport.aspx.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\SalesReport.aspx.cs",
-              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\SalesReport.aspx.cs",
-              "RelativeToolTip": "WebApplication1\\SalesReport.aspx.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAApwC8AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-28T13:48:48.7Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "StaffReport.aspx.cs",
-              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\StaffReport.aspx.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\StaffReport.aspx.cs",
-              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\StaffReport.aspx.cs",
-              "RelativeToolTip": "WebApplication1\\StaffReport.aspx.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T08:30:01.184Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 42,
               "Title": "n55wntdi..sql",
               "DocumentMoniker": "C:\\Users\\User\\AppData\\Local\\Temp\\n55wntdi..sql",
               "ToolTip": "C:\\Users\\User\\AppData\\Local\\Temp\\n55wntdi..sql",
@@ -375,19 +749,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Profile.aspx.cs",
-              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Profile.aspx.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\Profile.aspx.cs",
-              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Profile.aspx.cs",
-              "RelativeToolTip": "WebApplication1\\Profile.aspx.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-30T02:27:53.418Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 41,
               "Title": "Site.Master.designer.cs",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\Site.Master.designer.cs",
               "RelativeDocumentMoniker": "WebApplication1\\Site.Master.designer.cs",
@@ -395,11 +757,12 @@
               "RelativeToolTip": "WebApplication1\\Site.Master.designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAewEcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-30T02:14:37.702Z"
+              "WhenOpened": "2025-08-30T02:14:37.702Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 44,
               "Title": "UpdateStock.aspx.designer.cs",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\UpdateStock.aspx.designer.cs",
               "RelativeDocumentMoniker": "WebApplication1\\UpdateStock.aspx.designer.cs",
@@ -407,23 +770,12 @@
               "RelativeToolTip": "WebApplication1\\UpdateStock.aspx.designer.cs",
               "ViewState": "AgIAADQAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T08:22:18.027Z"
+              "WhenOpened": "2025-08-29T08:22:18.027Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "EditStaff.aspx.cs",
-              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\EditStaff.aspx.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\EditStaff.aspx.cs",
-              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\EditStaff.aspx.cs",
-              "RelativeToolTip": "WebApplication1\\EditStaff.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAawCcAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T08:27:35.087Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 45,
               "Title": "EditStaff.aspx.designer.cs",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\EditStaff.aspx.designer.cs",
               "RelativeDocumentMoniker": "WebApplication1\\EditStaff.aspx.designer.cs",
@@ -431,23 +783,12 @@
               "RelativeToolTip": "WebApplication1\\EditStaff.aspx.designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAABRwFkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T08:27:42.254Z"
+              "WhenOpened": "2025-08-29T08:27:42.254Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "UpdateStock.aspx.cs",
-              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\UpdateStock.aspx.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\UpdateStock.aspx.cs",
-              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\UpdateStock.aspx.cs",
-              "RelativeToolTip": "WebApplication1\\UpdateStock.aspx.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAWwDkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T08:22:09.059Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 43,
               "Title": "AddProduct.aspx.designer.cs",
               "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AddProduct.aspx.designer.cs",
               "RelativeDocumentMoniker": "WebApplication1\\AddProduct.aspx.designer.cs",
@@ -455,19 +796,8 @@
               "RelativeToolTip": "WebApplication1\\AddProduct.aspx.designer.cs",
               "ViewState": "AgIAADcAAAAAAAAAAAAWwH0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T03:38:00.268Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "AddProduct.aspx.cs",
-              "DocumentMoniker": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AddProduct.aspx.cs",
-              "RelativeDocumentMoniker": "WebApplication1\\AddProduct.aspx.cs",
-              "ToolTip": "D:\\SUPERMARKET-ASG\\Supermarket-Web-App\\WebApplication1\\AddProduct.aspx.cs",
-              "RelativeToolTip": "WebApplication1\\AddProduct.aspx.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAkwDEAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-29T03:37:31.963Z"
+              "WhenOpened": "2025-08-29T03:38:00.268Z",
+              "EditorCaption": ""
             }
           ]
         }

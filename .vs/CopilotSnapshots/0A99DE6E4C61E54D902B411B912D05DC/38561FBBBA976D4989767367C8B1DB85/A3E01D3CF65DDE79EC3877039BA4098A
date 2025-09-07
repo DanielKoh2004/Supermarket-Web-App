@@ -1,0 +1,93 @@
+﻿using System;
+using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using WebApplication1.Helpers;
+
+namespace WebApplication1
+{
+    public partial class ChangePassword : System.Web.UI.Page
+    {
+        string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+        }
+
+        protected void btnUpdatePassword_Click(object sender, EventArgs e)
+        {
+            // Ensure user is logged in
+            if (Session["AccountID"] == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+            int accountId = Convert.ToInt32(Session["AccountID"]);
+            string oldPassword = txtOldPassword.Text.Trim();
+            string newPassword = txtNewPassword.Text.Trim();
+            string confirmPassword = txtConfirmPassword.Text.Trim();
+
+            // 1. Get the current user's password hash from the database using AccountID
+            string dbPasswordHash = null;
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT Password FROM Account WHERE AccountID = @AccountID", conn);
+                cmd.Parameters.AddWithValue("@AccountID", accountId);
+                var result = cmd.ExecuteScalar();
+                if (result != null)
+                    dbPasswordHash = result.ToString();
+            }
+
+            // 2. Check if the old password matches the current user's password (using hash)
+            if (dbPasswordHash == null || !PasswordHelper.VerifyPassword(oldPassword, dbPasswordHash))
+            {
+                lblMessage.Text = "Old password is incorrect.";
+                return;
+            }
+
+            // 3. Validate new password format
+            if (!IsValidPassword(newPassword))
+            {
+                lblMessage.Text = "New password does not meet requirements.";
+                return;
+            }
+            if (newPassword != confirmPassword)
+            {
+                lblMessage.Text = "New password and confirm password do not match.";
+                return;
+            }
+
+            // 4. Hash the new password and update for the current user only
+            string hashedNewPassword = PasswordHelper.HashPassword(newPassword);
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE Account SET Password = @Password WHERE AccountID = @AccountID", conn);
+                cmd.Parameters.AddWithValue("@Password", hashedNewPassword);
+                cmd.Parameters.AddWithValue("@AccountID", accountId);
+                cmd.ExecuteNonQuery();
+                lblMessage.ForeColor = System.Drawing.Color.Green;
+                lblMessage.Text = "Password updated successfully!";
+            }
+        }
+
+        private bool IsValidPassword(string password)
+        {
+            if (string.IsNullOrWhiteSpace(password) || password.Length < 8 || password.Length > 50)
+                return false;
+            if (password.Contains(" "))
+                return false;
+            if (!Regex.IsMatch(password, @"[A-Z]")) // Uppercase
+                return false;
+            if (!Regex.IsMatch(password, @"[a-z]")) // Lowercase
+                return false;
+            if (!Regex.IsMatch(password, @"\d")) // Number
+                return false;
+            if (!Regex.IsMatch(password, @"[!@#$%]")) // Special char
+                return false;
+            return true;
+        }
+    }
+}

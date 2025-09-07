@@ -1,0 +1,336 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class ShoppingCart : System.Web.UI.Page
+    {
+        // Connection string for database access
+        string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+        // Flag to track if cart is empty
+        private bool cartIsEmpty = false;
+
+        // Page load event handler
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            // Only load cart items and vouchers on first page load, not on postbacks
+            if (!IsPostBack)
+            {
+                LoadCartItems(); // Load cart items
+                BindClaimedVouchers(); // Bind available vouchers
+            }
+        }
+
+        // Updates the subtotal in the Cart table, including voucher discount
+        private void UpdateCartSubtotal(int cartId)
+        {
+            decimal subtotal = 0;
+            decimal discount = GetSelectedVoucherDiscount(); // Get discount from selected voucher
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                con.Open(); // Open database connection
+                // SQL to calculate subtotal for all items in cart
+                string subtotalSql = @"
+                    SELECT SUM(ci.ItemQuantity * i.UnitPrice)
+                    FROM Cart_Item ci
+                    JOIN Item i ON ci.ItemID = i.ItemID
+                    WHERE ci.CartID = @CartID";
+                using (var cmd = new SqlCommand(subtotalSql, con))
+                {
+                    cmd.Parameters.AddWithValue("@CartID", cartId); // Set cart ID parameter
+                    var result = cmd.ExecuteScalar(); // Get subtotal value
+                    subtotal = (result != null && result != DBNull.Value) ? Convert.ToDecimal(result) : 0;
+                }
+                // Subtract voucher discount from subtotal
+                decimal finalSubtotal = subtotal - discount;
+                if (finalSubtotal < 0) finalSubtotal = 0; // Prevent negative subtotal
+                // SQL to update subtotal in Cart table
+                string updateSubtotalSql = @"
+                    UPDATE Cart
+                    SET SubTotal = @SubTotal
+                    WHERE CartID = @CartID";
+                using (var cmd = new SqlCommand(updateSubtotalSql, con))
+                {
+                    cmd.Parameters.AddWithValue("@SubTotal", finalSubtotal); // Set new subtotal
+                    cmd.Parameters.AddWithValue("@CartID", cartId); // Set cart ID
+                    cmd.ExecuteNonQuery(); // Update subtotal in database
+                }
+            }
+        }
+
+        // Gets the discount amount for the selected voucher
+        private decimal GetSelectedVoucherDiscount()
+        {
+            // Check if a voucher is selected
+            if (!string.IsNullOrEmpty(ddlVoucher.SelectedValue))
+            {
+                var parts = ddlVoucher.SelectedValue.Split(','); // Split value to get voucher ID
+                if (parts.Length == 2)
+                {
+                    int voucherId = Convert.ToInt32(parts[1]); // Get voucher ID
+                    using (var con = new SqlConnection(connStr))
+                    {
+                        con.Open(); // Open database connection
+                        using (var cmd = new SqlCommand("SELECT DiscountAmount FROM Voucher WHERE VoucherID=@VoucherID", con))
+                        {
+                            cmd.Parameters.AddWithValue("@VoucherID", voucherId); // Set voucher ID parameter
+                            var result = cmd.ExecuteScalar(); // Get discount amount
+                            if (result != null && result != DBNull.Value)
+                                return Convert.ToDecimal(result); // Return discount
+                        }
+                    }
+                }
+            }
+            return 0; // No voucher selected or no discount
+        }
+
+        // Loads cart items for the current user
+        private void LoadCartItems()
+        {
+            // Get account ID from session
+            int accountId = Session["AccountID"] != null ? Convert.ToInt32(Session["AccountID"]) : 0;
+            if (accountId <= 0)
+            {
+                // If not logged in, disable checkout and show message
+                btnCheckout.Enabled = false;
+                lblMessage.Text = "Please log in to checkout.";
+                lblSubtotal.Text = "";
+                rptCart.DataSource = null;
+                rptCart.DataBind();
+                cartIsEmpty = true;
+                UpdateVoucherDisplay(0);
+                return;
+            }
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                con.Open(); // Open database connection
+                // SQL to get CartID for this user
+                string cartIdQuery = "SELECT CartID FROM Cart WHERE AccountID=@AccountID";
+                SqlCommand cartCmd = new SqlCommand(cartIdQuery, con);
+                cartCmd.Parameters.AddWithValue("@AccountID", accountId);
+                object cartIdObj = cartCmd.ExecuteScalar(); // Get cart ID
+
+                if (cartIdObj == null)
+                {
+                    // If no cart, disable checkout and show message
+                    btnCheckout.Enabled = false;
+                    lblMessage.Text = "Your cart is empty.";
+                    lblSubtotal.Text = "";
+                    rptCart.DataSource = null;
+                    rptCart.DataBind();
+                    cartIsEmpty = true;
+                    UpdateVoucherDisplay(0);
+                    return;
+                }
+
+                int cartId = (int)cartIdObj; // Convert cart ID
+
+                // Update subtotal in Cart table (includes voucher discount)
+                UpdateCartSubtotal(cartId);
+
+                // SQL to get cart items for this cart
+                string itemsQuery = @"
+                    SELECT ci.Cart_ItemID, ci.ItemID, i.ItemName, i.ImageFile, i.UnitPrice, ci.ItemQuantity
+                    FROM Cart_Item ci
+                    JOIN Item i ON ci.ItemID = i.ItemID
+                    WHERE ci.CartID = @CartID";
+                SqlCommand itemsCmd = new SqlCommand(itemsQuery, con);
+                itemsCmd.Parameters.AddWithValue("@CartID", cartId);
+
+                SqlDataAdapter da = new SqlDataAdapter(itemsCmd); // Data adapter for query
+                DataTable dt = new DataTable(); // DataTable to hold results
+                da.Fill(dt); // Fill DataTable with cart items
+
+                rptCart.DataSource = dt; // Bind cart items to repeater
+                rptCart.DataBind();
+
+                // Check if cart is empty
+                cartIsEmpty = dt.Rows.Count == 0;
+                btnCheckout.Enabled = !cartIsEmpty; // Enable checkout if cart not empty
+                if (cartIsEmpty)
+                {
+                    lblSubtotal.Text = "";
+                    lblMessage.Text = "Your cart is empty.";
+                    UpdateVoucherDisplay(0);
+                }
+                else
+                {
+                    lblMessage.Text = "";
+                }
+
+                // SQL to get subtotal from Cart table (already discounted)
+                string getSubtotalSql = "SELECT SubTotal FROM Cart WHERE CartID = @CartID";
+                using (var cmd = new SqlCommand(getSubtotalSql, con))
+                {
+                    cmd.Parameters.AddWithValue("@CartID", cartId);
+                    var result = cmd.ExecuteScalar(); // Get subtotal value
+                    decimal subtotal = (result != null && result != DBNull.Value)
+                        ? Convert.ToDecimal(result)
+                        : 0;
+                    decimal discount = GetSelectedVoucherDiscount(); // Get discount
+                    lblSubtotal.Text = $"RM {subtotal:F2}"; // Display subtotal
+                    UpdateVoucherDisplay(discount); // Update voucher display
+                }
+            }
+        }
+
+        // Updates the voucher discount label
+        private void UpdateVoucherDisplay(decimal discount)
+        {
+            lblVoucherDiscount.Text = discount > 0 ? $"Voucher Discount: -RM {discount:F2}" : "No voucher applied.";
+        }
+
+        // Binds claimed vouchers to the dropdown
+        private void BindClaimedVouchers()
+        {
+            int accountId = Session["AccountID"] != null ? Convert.ToInt32(Session["AccountID"]) : 0;
+            int customerId = 0;
+            using (var con = new SqlConnection(connStr))
+            {
+                con.Open(); // Open database connection
+                // SQL to get CustomerID for this account
+                using (var cmd = new SqlCommand("SELECT CustomerID FROM Customer WHERE AccountID=@AccountID", con))
+                {
+                    cmd.Parameters.AddWithValue("@AccountID", accountId);
+                    var result = cmd.ExecuteScalar(); // Get customer ID
+                    if (result != null && result != DBNull.Value) customerId = Convert.ToInt32(result);
+                }
+                // SQL to get unused vouchers for this customer
+                using (var cmd = new SqlCommand(@"
+            SELECT cv.CustomerVoucherID, v.VoucherID, v.VoucherCode, v.DiscountAmount
+            FROM CustomerVoucher cv
+            JOIN Voucher v ON cv.VoucherID = v.VoucherID
+            WHERE cv.CustomerID = @CustomerID AND cv.IsUsed = 0", con))
+                {
+                    cmd.Parameters.AddWithValue("@CustomerID", customerId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        ddlVoucher.Items.Clear(); // Clear dropdown items
+                        ddlVoucher.Items.Add(new ListItem("Select voucher...", "")); // Add default item
+                        while (reader.Read())
+                        {
+                            // Format voucher display text
+                            string text = reader["VoucherCode"] + " (RM" + Convert.ToDecimal(reader["DiscountAmount"]).ToString("F2") + ")";
+                            // Value contains CustomerVoucherID and VoucherID
+                            string value = reader["CustomerVoucherID"].ToString() + "," + reader["VoucherID"].ToString();
+                            ddlVoucher.Items.Add(new ListItem(text, value)); // Add voucher to dropdown
+                        }
+                    }
+                }
+            }
+        }
+
+        // Checkout button click event handler
+        protected void btnCheckout_Click(object sender, EventArgs e)
+        {
+            // Check if cart is empty or user not logged in
+            if (cartIsEmpty || Session["AccountID"] == null || Convert.ToInt32(Session["AccountID"]) <= 0)
+            {
+                lblMessage.Text = Session["AccountID"] == null || Convert.ToInt32(Session["AccountID"]) <= 0
+                    ? "Please log in to checkout."
+                    : "Your cart is empty.";
+                btnCheckout.Enabled = false;
+                return;
+            }
+            // Save selected voucher to session
+            if (!string.IsNullOrEmpty(ddlVoucher.SelectedValue))
+            {
+                var parts = ddlVoucher.SelectedValue.Split(','); // Split value to get voucher IDs
+                Session["SelectedCustomerVoucherID"] = parts[0]; // Save CustomerVoucherID
+                Session["SelectedVoucherID"] = parts[1]; // Save VoucherID
+            }
+            else
+            {
+                Session["SelectedCustomerVoucherID"] = null;
+                Session["SelectedVoucherID"] = null;
+            }
+            Response.Redirect("Checkout.aspx"); // Redirect to checkout page
+        }
+
+        // Back button click event handler
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Menu.aspx"); // Redirect to menu page
+        }
+
+        // Repeater item command event handler (plus, minus, delete)
+        protected void rptCart_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            int cartItemId = Convert.ToInt32(e.CommandArgument); // Get Cart_ItemID from command argument
+            string command = e.CommandName; // Get command name (plus, minus, delete)
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                con.Open(); // Open database connection
+                if (command == "plus")
+                {
+                    // Get current quantity and item id for this cart item
+                    string getItemSql = "SELECT ItemID, ItemQuantity FROM Cart_Item WHERE Cart_ItemID = @Cart_ItemID";
+                    SqlCommand getItemCmd = new SqlCommand(getItemSql, con);
+                    getItemCmd.Parameters.AddWithValue("@Cart_ItemID", cartItemId);
+                    int itemId = 0;
+                    int currentQty = 0;
+                    using (var rdr = getItemCmd.ExecuteReader())
+                    {
+                        if (rdr.Read())
+                        {
+                            itemId = Convert.ToInt32(rdr["ItemID"]);
+                            currentQty = Convert.ToInt32(rdr["ItemQuantity"]);
+                        }
+                    }
+                    // Check stock for the item
+                    string stockSql = "SELECT StockQuantity FROM Item WHERE ItemID = @ItemID";
+                    SqlCommand stockCmd = new SqlCommand(stockSql, con);
+                    stockCmd.Parameters.AddWithValue("@ItemID", itemId);
+                    int stock = Convert.ToInt32(stockCmd.ExecuteScalar());
+                    // If increasing quantity exceeds stock, show error
+                    if (currentQty + 1 > stock)
+                    {
+                        lblMessage.Text = "❌ Not enough stock for this item.";
+                        return;
+                    }
+                    // Update item quantity in cart (increase by 1)
+                    string sql = "UPDATE Cart_Item SET ItemQuantity = ItemQuantity + 1 WHERE Cart_ItemID = @Cart_ItemID";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@Cart_ItemID", cartItemId);
+                    cmd.ExecuteNonQuery();
+                }
+                else if (command == "minus")
+                {
+                    // Only decrease quantity if greater than 1
+                    string sql = "UPDATE Cart_Item SET ItemQuantity = CASE WHEN ItemQuantity > 1 THEN ItemQuantity - 1 ELSE 1 END WHERE Cart_ItemID = @Cart_ItemID";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@Cart_ItemID", cartItemId);
+                    cmd.ExecuteNonQuery();
+                }
+                else if (command == "delete")
+                {
+                    // Delete item from cart
+                    string sql = "DELETE FROM Cart_Item WHERE Cart_ItemID = @Cart_ItemID";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@Cart_ItemID", cartItemId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            // Reload cart items after update
+            LoadCartItems();
+        }
+
+        // Voucher dropdown selection changed event handler
+        protected void ddlVoucher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadCartItems(); // Refresh subtotal and voucher display when voucher changes
+        }
+
+        // Back button click event handler (ImageButton)
+        protected void btnBack_Click(object sender, ImageClickEventArgs e)
+        {
+            // No logic implemented (could redirect to previous page)
+        }
+    }
+}

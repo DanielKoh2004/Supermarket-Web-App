@@ -120,17 +120,27 @@
                 <asp:Repeater ID="rptCart" runat="server" OnItemCommand="rptCart_ItemCommand">
                     <ItemTemplate>
                         <tr>
+                            <!-- Cart item cell: shows delete button, product image, and name -->
                             <td style="display: flex; align-items: center; gap: 10px;">
+                                <!-- CommandName is an action name used for backend, CommandArgument get value and use in logic -->
                                 <asp:Button runat="server" CommandName="delete" CommandArgument='<%# Eval("Cart_ItemID") %>' Text="&#10006;" CssClass="btn-delete" Style="background-color: transparent; color: #b00020; border: none; font-size: 22px; font-weight: bold; margin-right: 8px; padding: 0;" />
+                                <!-- Product image: dynamically loads image for the item -->
                                 <img src='<%# ResolveUrl("~/img/menu/") + Eval("ImageFile") %>' alt='<%# Eval("ItemName") %>' class="product-img" />
+                                <!-- Product name: displays the name of the item -->
                                 <span class="product-name"><%# Eval("ItemName") %></span>
                             </td>
+                            <!-- Price cell: shows unit price formatted to 2 decimals -->
                             <td>RM <%# Eval("UnitPrice", "{0:F2}") %></td>
+                            <!-- Quantity cell: shows minus button, quantity label, plus button -->
                             <td>
+                                <!-- Minus button: decreases quantity, passes Cart_ItemID to handler -->
                                 <asp:Button runat="server" CommandName="minus" CommandArgument='<%# Eval("Cart_ItemID") %>' Text="-" CssClass="qty-btn" Style="background-color: transparent; color: #333; border: 1px solid #ccc; border-radius: 4px; width: 28px; height: 28px; font-size: 18px; margin-right: 4px;" />
+                                <!-- Quantity label: displays current quantity -->
                                 <asp:Label runat="server" Text='<%# Eval("ItemQuantity") %>' CssClass="qty-box" />
+                                <!-- Plus button: increases quantity, passes Cart_ItemID to handler -->
                                 <asp:Button runat="server" CommandName="plus" CommandArgument='<%# Eval("Cart_ItemID") %>' Text="+" CssClass="qty-btn" Style="background-color: transparent; color: #333; border: 1px solid #ccc; border-radius: 4px; width: 28px; height: 28px; font-size: 18px; margin-left: 4px;" />
                             </td>
+                            <!-- Total cell: shows total price for this item (unit price * quantity) -->
                             <td>RM <%# (Convert.ToDecimal(Eval("UnitPrice")) * Convert.ToInt32(Eval("ItemQuantity"))).ToString("F2") %></td>
                         </tr>
                     </ItemTemplate>

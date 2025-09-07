@@ -1,0 +1,117 @@
+﻿using System;
+using System.Data.SqlClient;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class Profile : System.Web.UI.Page
+    {
+        string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                if (Session["AccountID"] == null || Session["AccountType"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                    return;
+                }
+                int accountId = Convert.ToInt32(Session["AccountID"]);
+                string accountType = Session["AccountType"].ToString();
+                LoadProfile(accountId, accountType);
+            }
+        }
+
+        private void LoadProfile(int accountId, string accountType)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand cmd;
+                if (accountType == "Customer")
+                {
+                    cmd = new SqlCommand("SELECT Name, DateOfBirth, MobileNumber, Email FROM Customer INNER JOIN Account ON Customer.AccountID = Account.AccountID WHERE Customer.AccountID = @AccountID", conn);
+                }
+                else // Staff
+                {
+                    cmd = new SqlCommand("SELECT Name, DateOfBirth, MobileNumber, Email FROM Staff INNER JOIN Account ON Staff.AccountID = Account.AccountID WHERE Staff.AccountID = @AccountID", conn);
+                }
+                cmd.Parameters.AddWithValue("@AccountID", accountId);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        txtName.Text = reader["Name"].ToString();
+                        txtDOB.Text = reader["DateOfBirth"] != DBNull.Value ? Convert.ToDateTime(reader["DateOfBirth"]).ToString("yyyy-MM-dd") : "";
+                        txtMobile.Text = reader["MobileNumber"].ToString();
+                        txtEmail.Text = reader["Email"].ToString();
+                    }
+                }
+            }
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            if (Session["AccountID"] == null || Session["AccountType"] == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+            int accountId = Convert.ToInt32(Session["AccountID"]);
+            string accountType = Session["AccountType"].ToString();
+
+            string name = txtName.Text.Trim();
+            string dob = txtDOB.Text.Trim();
+            string mobile = txtMobile.Text.Trim();
+            string email = txtEmail.Text.Trim();
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
+                try
+                {
+                    // Update Account email
+                    SqlCommand cmdAccount = new SqlCommand("UPDATE Account SET Email = @Email WHERE AccountID = @AccountID", conn, transaction);
+                    cmdAccount.Parameters.AddWithValue("@Email", email);
+                    cmdAccount.Parameters.AddWithValue("@AccountID", accountId);
+                    cmdAccount.ExecuteNonQuery();
+
+                    // Update Customer or Staff table
+                    SqlCommand cmdProfile;
+                    if (accountType == "Customer")
+                    {
+                        cmdProfile = new SqlCommand("UPDATE Customer SET Name = @Name, DateOfBirth = @DOB, MobileNumber = @Mobile WHERE AccountID = @AccountID", conn, transaction);
+                    }
+                    else // Staff
+                    {
+                        cmdProfile = new SqlCommand("UPDATE Staff SET Name = @Name, DateOfBirth = @DOB, MobileNumber = @Mobile WHERE AccountID = @AccountID", conn, transaction);
+                    }
+                    cmdProfile.Parameters.AddWithValue("@Name", name);
+                    cmdProfile.Parameters.AddWithValue("@DOB", string.IsNullOrEmpty(dob) ? (object)DBNull.Value : DateTime.Parse(dob));
+                    cmdProfile.Parameters.AddWithValue("@Mobile", mobile);
+                    cmdProfile.Parameters.AddWithValue("@AccountID", accountId);
+                    cmdProfile.ExecuteNonQuery();
+
+                    transaction.Commit();
+                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                    lblMessage.Text = "Profile updated successfully!";
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                    lblMessage.Text = "Error: " + ex.Message;
+                }
+            }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Login.aspx");
+        }
+    }
+}

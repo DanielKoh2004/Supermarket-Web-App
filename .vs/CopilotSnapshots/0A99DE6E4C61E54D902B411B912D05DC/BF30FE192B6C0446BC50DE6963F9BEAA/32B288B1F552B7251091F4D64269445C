@@ -1,0 +1,78 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1
+{
+    public partial class SalesReport : System.Web.UI.Page
+    {
+        // Page load event (no special logic required currently)
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        // Handles sales report generation when button is clicked
+        protected void btnGenerateSales_Click(object sender, EventArgs e)
+        {
+            // Get connection string from configuration
+            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineOrderSystemConnection"].ConnectionString;
+            using (var con = new System.Data.SqlClient.SqlConnection(connStr))
+            {
+                con.Open();
+                // Get selected date from calendar control
+                DateTime selectedDate = calSalesDate.SelectedDate;
+                // SQL query to group sales by date and product, and sum quantities and sales
+                string sql = @"
+                    SELECT 
+                        CAST(o.OrderDate AS DATE) AS [Date],
+                        i.ItemName AS [Product],
+                        SUM(oi.Quantity) AS [Quantity],
+                        SUM(oi.Quantity * oi.ItemPrice) AS [TotalSales]
+                    FROM [Order] o
+                    JOIN OrderItem oi ON o.OrderID = oi.OrderID
+                    JOIN Item i ON oi.ItemID = i.ItemID
+                    WHERE (@SelectedDate IS NULL OR CAST(o.OrderDate AS DATE) = @SelectedDate)
+                    GROUP BY CAST(o.OrderDate AS DATE), i.ItemName
+                    ORDER BY [Date] DESC, i.ItemName
+                ";
+                using (var cmd = new System.Data.SqlClient.SqlCommand(sql, con))
+                {
+                    // If no date selected, show message and clear grid
+                    if (selectedDate == DateTime.MinValue)
+                    {
+                        lblSelectDate.Text = "Please select a date.";
+                        gvSalesReport.DataSource = null;
+                        gvSalesReport.DataBind();
+                        gvSalesReport.Caption = "";
+                        return;
+                    }
+                    else
+                        cmd.Parameters.AddWithValue("@SelectedDate", selectedDate.Date);
+                    using (var da = new System.Data.SqlClient.SqlDataAdapter(cmd))
+                    {
+                        var dt = new System.Data.DataTable();
+                        da.Fill(dt);
+                        // Calculate grand total sales
+                        decimal grandTotal = 0;
+                        foreach (System.Data.DataRow row in dt.Rows)
+                        {
+                            if (row["TotalSales"] != DBNull.Value)
+                            {
+                                decimal itemTotal = Convert.ToDecimal(row["TotalSales"]);
+                                grandTotal += itemTotal;
+                            }
+                        }
+                        // Bind sales data to grid view and show grand total
+                        gvSalesReport.DataSource = dt;
+                        gvSalesReport.DataBind();
+                        gvSalesReport.Caption = "Grand Total Sales: RM " + grandTotal.ToString("F2");
+                    }
+                }
+            }
+        }
+    }
+}
